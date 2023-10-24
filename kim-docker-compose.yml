@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  mysql:
+    image: mysql:8.1.0
+    restart: always
+    privileged: True
+    container_name: mysql8.1.0
+    volumes:
+#      - ./volumes/mysql/data/:/var/lib/mysql/
+      - ./volumes/mysql/conf/:/etc/mysql/conf.d/
+      - ./volumes/mysql/logs/:/logs/
+      - ./volumes/mysql/init/:/docker-entrypoint-initdb.d/
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
+      MYSQL_INITDB_SKIP_TZINFO: "Asia/Shanghai"
+    ports:
+      - "3306:3306"
+    network_mode: "bridge"
+
+  redis:
+    image: redis:7.2.2
+    container_name: redis7.2.2
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./volumes/redis/conf/:/usr/local/etc/redis/
+      - ./volumes/redis/data/:/data/
+      - ./volumes/redis/data/logs/:/logs/
+    command: redis-server /usr/local/etc/redis/redis.conf
