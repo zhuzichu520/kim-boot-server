@@ -6,28 +6,28 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler.Han
 
 
 class HandshakeEvent(
-        private val uri: String,
-        private val header: HttpHeaders
+    private val uri: String,
+    private val header: HttpHeaders
 ) {
-    fun getHeader(name: String?): String {
+    fun getHeader(name: String): String? {
         return header[name]
     }
 
-    fun getHeaders(name: String?): List<String> {
+    fun getHeaders(name: String): List<String> {
         return header.getAll(name)
     }
 
-    fun getIntHeader(name: String?): Int {
+    fun getIntHeader(name: String): Int? {
         return header.getInt(name)
     }
 
-    fun getParameter(name: String?): String? {
+    fun getParameter(name: String): String? {
         val decoder = QueryStringDecoder(uri)
         val valueList = decoder.parameters()[name]
         return if (valueList.isNullOrEmpty()) null else valueList[0]
     }
 
-    fun getParameters(name: String?): List<String> {
+    fun getParameters(name: String): List<String> {
         val decoder = QueryStringDecoder(uri)
         return decoder.parameters()[name]!!
     }

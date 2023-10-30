@@ -14,7 +14,7 @@ class LoggingHandler : LoggingHandler(LogLevel.INFO) {
         val name = Thread.currentThread().name
         setThreadName(ctx)
         super.channelRead(ctx, msg)
-        Thread.currentThread().setName(name)
+        Thread.currentThread().name = name
     }
 
     @Throws(Exception::class)
@@ -22,7 +22,7 @@ class LoggingHandler : LoggingHandler(LogLevel.INFO) {
         val name = Thread.currentThread().name
         setThreadName(ctx)
         super.write(ctx, msg, promise)
-        Thread.currentThread().setName(name)
+        Thread.currentThread().name = name
     }
 
     @Throws(Exception::class)
@@ -30,7 +30,7 @@ class LoggingHandler : LoggingHandler(LogLevel.INFO) {
         val name = Thread.currentThread().name
         setThreadName(ctx)
         super.close(ctx, promise)
-        Thread.currentThread().setName(name)
+        Thread.currentThread().name = name
     }
 
     @Throws(Exception::class)
@@ -38,7 +38,7 @@ class LoggingHandler : LoggingHandler(LogLevel.INFO) {
         val name = Thread.currentThread().name
         setThreadName(ctx)
         super.channelInactive(ctx)
-        Thread.currentThread().setName(name)
+        Thread.currentThread().name = name
     }
 
     @Throws(Exception::class)
@@ -46,7 +46,7 @@ class LoggingHandler : LoggingHandler(LogLevel.INFO) {
         val name = Thread.currentThread().name
         setThreadName(ctx)
         super.userEventTriggered(ctx, evt)
-        Thread.currentThread().setName(name)
+        Thread.currentThread().name = name
     }
 
     override fun channelRegistered(ctx: ChannelHandlerContext) {

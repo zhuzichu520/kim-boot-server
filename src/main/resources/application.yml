@@ -16,13 +16,6 @@ kim:
     write-idle: 45s
     read-idle: 60s
     max-pong-timeout: 3
-  apns:
-    p12:
-      file: /apns/app.p12
-      password: 123
-    app-id: com.xxx.xxx.ios
-    debug: false
-
 
 spring:
   profiles:
@@ -30,7 +23,7 @@ spring:
   jackson:
     default-property-inclusion: non_empty
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/cim?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/kim?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource

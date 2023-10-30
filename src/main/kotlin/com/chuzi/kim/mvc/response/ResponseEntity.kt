@@ -6,11 +6,15 @@ import org.springframework.http.HttpStatus
 
 @Schema(name = "ResponseEntity", description = "统一返回结果实体对象")
 data class ResponseEntity<T>(
-    @Parameter()
+    @Parameter(description = "错误状态码")
     var code: Int = HttpStatus.OK.value(),
+    @Parameter(description = "错误信息")
     var message: String? = null,
+    @Parameter(description = "结果数据")
     var data: T? = null,
+    @Parameter(description = "token")
     var token: String? = null,
+    @Parameter(description = "时间戳")
     var timestamp: Long? = null
 ) {
 

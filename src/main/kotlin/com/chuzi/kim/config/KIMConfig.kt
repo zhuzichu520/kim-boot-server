@@ -1,8 +1,6 @@
 package com.chuzi.kim.config
 
 import com.chuzi.kim.component.handler.annotation.KIMHandler
-import com.chuzi.kim.component.predicate.HandshakePredicate
-import com.chuzi.kim.config.properties.APNsProperties
 import com.chuzi.kim.config.properties.KIMAppSocketProperties
 import com.chuzi.kim.config.properties.KIMWebsocketProperties
 import com.chuzi.kim.service.SessionService
@@ -27,7 +25,7 @@ import org.springframework.context.annotation.Configuration
 import java.util.function.Predicate
 
 
-@EnableConfigurationProperties(APNsProperties::class, KIMWebsocketProperties::class, KIMAppSocketProperties::class)
+@EnableConfigurationProperties(KIMWebsocketProperties::class, KIMAppSocketProperties::class)
 @Configuration
 class KIMConfig : KIMRequestHandler, ApplicationListener<ApplicationStartedEvent?> {
 

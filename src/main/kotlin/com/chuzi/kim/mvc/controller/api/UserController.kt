@@ -1,14 +1,17 @@
 package com.chuzi.kim.mvc.controller.api
 
-import com.chuzi.kim.annotation.AccessToken
+import com.chuzi.kim.entity.User
 import com.chuzi.kim.mvc.response.ResponseEntity
-import com.chuzi.kim.service.AccessTokenService
+import com.chuzi.kim.service.UserService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.Parameters
 import io.swagger.v3.oas.annotations.enums.ParameterIn
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.annotation.Resource
+import jakarta.validation.constraints.NotNull
+import org.hibernate.validator.constraints.Length
+import org.slf4j.LoggerFactory
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
@@ -18,8 +21,32 @@ import org.springframework.web.bind.annotation.*
 @Validated
 class UserController {
 
+
     @Resource
-    private lateinit var accessTokenService: AccessTokenService
+    private lateinit var userService: UserService
+
+    @Operation(method = "POST", description = "用户注册")
+    @PostMapping(value = ["/register"])
+    fun register(
+        @NotNull(message = "账号不能为空")
+        @Length(min=4, max = 30, message = "用户名只能在4~30位之间")
+        @Parameter(description = "用户账号", example = "18229858146")
+        @RequestParam
+        account: String,
+
+        @NotNull(message = "密码不能为空")
+        @Length(min = 4, max = 30, message = "密码只能在4~30位之间")
+        @Parameter(description = "用户密码", example = "123456")
+        @RequestParam
+        password: String
+    ): ResponseEntity<*> {
+        val user = User()
+        user.account = account
+        user.password = password
+        userService.register(user)
+        return ResponseEntity.make()
+    }
+
 
     @Operation(method = "POST", description = "模拟登录")
     @Parameters(
@@ -34,7 +61,7 @@ class UserController {
         body["telephone"] = "telephone"
         val result: ResponseEntity<Map<String, Any>> = ResponseEntity()
         result.data = body
-        result.token = accessTokenService.generate(telephone)
+
         result.timestamp = System.currentTimeMillis()
         return result
     }
@@ -43,11 +70,15 @@ class UserController {
     @GetMapping(value = ["/logout"])
     fun logout(
         @Parameter(hidden = true)
-        @AccessToken
         token: String?
     ): ResponseEntity<Any> {
-        accessTokenService.delete(token)
         return ResponseEntity.make()
     }
+
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(UserController::class.java)
+    }
+
+
 }
 

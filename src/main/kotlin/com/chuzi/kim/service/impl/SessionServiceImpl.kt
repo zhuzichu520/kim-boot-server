@@ -19,8 +19,7 @@ class SessionServiceImpl : SessionService {
 
     private var host: String = InetAddress.getLocalHost().hostAddress
 
-    override fun add(session: Session?) {
-        session ?: return
+    override fun add(session: Session) {
         session.bindTime = System.currentTimeMillis()
         session.host = host
         sessionRepository.save(session)
@@ -38,19 +37,17 @@ class SessionServiceImpl : SessionService {
         sessionRepository.updateState(id, state)
     }
 
-    override fun openApns(uid: String?, deviceToken: String?) {
-        uid ?: return
+    override fun openApns(uid: String, deviceToken: String) {
         keyValueRedisTemplate.openApns(uid, deviceToken)
         sessionRepository.openApns(uid, Session.CHANNEL_IOS)
     }
 
-    override fun closeApns(uid: String?) {
-        uid ?: return
+    override fun closeApns(uid: String) {
         keyValueRedisTemplate.closeApns(uid)
         sessionRepository.closeApns(uid, Session.CHANNEL_IOS)
     }
 
-    override fun findAll(): List<Session?> {
+    override fun findAll(): List<Session> {
         return sessionRepository.findAll().filter {
             it?.state == Session.STATE_ACTIVE || it?.state == Session.STATE_APNS
         }

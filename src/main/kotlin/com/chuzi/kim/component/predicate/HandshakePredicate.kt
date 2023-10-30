@@ -1,6 +1,7 @@
 package com.chuzi.kim.component.predicate
 
 import com.chuzi.imsdk.server.handshake.HandshakeEvent
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.function.Predicate
 
@@ -12,13 +13,15 @@ class HandshakePredicate : Predicate<HandshakeEvent?> {
      * @return true验证通过 false验证失败
      */
     override fun test(event: HandshakeEvent?): Boolean {
-        /*
-            可通过header或者uri传递参数
-            String token = event.getHeader("token");
-            String token = event.getParameter("token");
-            do auth....
-         */
+        event ?: return false
+        val token: String = event.getHeader("token")?:""
+        LOGGER.info("token is： {}", token)
         return true
     }
+
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(HandshakePredicate::class.java)
+    }
+
 }
 
