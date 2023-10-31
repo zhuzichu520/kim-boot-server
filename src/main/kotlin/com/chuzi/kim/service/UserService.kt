@@ -6,5 +6,7 @@ interface UserService {
 
     fun register(user: User)
 
+    fun login(user: User):String
+
 }
 

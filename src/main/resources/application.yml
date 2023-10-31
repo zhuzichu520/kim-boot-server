@@ -16,6 +16,8 @@ kim:
     write-idle: 45s
     read-idle: 60s
     max-pong-timeout: 3
+  token:
+    enable:
 
 spring:
   profiles:

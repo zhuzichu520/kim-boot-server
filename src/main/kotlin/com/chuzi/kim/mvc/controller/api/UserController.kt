@@ -1,5 +1,6 @@
 package com.chuzi.kim.mvc.controller.api
 
+import com.chuzi.kim.annotation.PassToken
 import com.chuzi.kim.entity.User
 import com.chuzi.kim.mvc.response.ResponseEntity
 import com.chuzi.kim.service.UserService
@@ -26,6 +27,7 @@ class UserController {
     private lateinit var userService: UserService
 
     @Operation(method = "POST", description = "用户注册")
+    @PassToken
     @PostMapping(value = ["/register"])
     fun register(
         @NotNull(message = "账号不能为空")
@@ -49,19 +51,27 @@ class UserController {
 
 
     @Operation(method = "POST", description = "模拟登录")
-    @Parameters(
-        Parameter(name = "telephone", description = "手机号码", `in` = ParameterIn.QUERY),
-        Parameter(name = "password", description = "密码", `in` = ParameterIn.QUERY)
-    )
+    @PassToken
     @PostMapping(value = ["/login"])
-    fun login(@RequestParam telephone: String): ResponseEntity<*> {
-        val body: MutableMap<String, Any> = HashMap()
-        body["id"] = telephone.toLong()
-        body["name"] = "测试用户"
-        body["telephone"] = "telephone"
-        val result: ResponseEntity<Map<String, Any>> = ResponseEntity()
-        result.data = body
+    fun login(
+        @NotNull(message = "账号不能为空")
+        @Length(min=4, max = 30, message = "用户名只能在4~30位之间")
+        @Parameter(description = "用户账号", example = "18229858146")
+        @RequestParam
+        account: String,
 
+        @NotNull(message = "密码不能为空")
+        @Length(min = 4, max = 30, message = "密码只能在4~30位之间")
+        @Parameter(description = "用户密码", example = "123456")
+        @RequestParam
+        password: String
+    ): ResponseEntity<*> {
+        val user = User()
+        user.account = account
+        user.password = password
+        val token =  userService.login(user)
+        val result: ResponseEntity<Map<String, Any>> = ResponseEntity()
+        result.token = token
         result.timestamp = System.currentTimeMillis()
         return result
     }
@@ -79,6 +89,4 @@ class UserController {
         private val LOGGER = LoggerFactory.getLogger(UserController::class.java)
     }
 
-
 }
-

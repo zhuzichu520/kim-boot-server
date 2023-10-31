@@ -6,19 +6,19 @@ import org.springframework.stereotype.Component
 
 
 @Component
-class TokenRedisTemplate(connectionFactory: RedisConnectionFactory?) : StringRedisTemplate(connectionFactory!!) {
+class TokenRedisTemplate(connectionFactory: RedisConnectionFactory) : StringRedisTemplate(connectionFactory) {
 
-    fun save(token: String?, uid: String?) {
+    fun save(token: String, uid: String) {
         val key = String.format(TOKEN_CACHE_PREFIX, token)
-        super.boundValueOps(key).set(uid!!)
+        super.boundValueOps(key).set(uid)
     }
 
-    operator fun get(token: String?): String? {
+    operator fun get(token: String): String? {
         val key = String.format(TOKEN_CACHE_PREFIX, token)
         return super.boundValueOps(key).get()
     }
 
-    fun remove(token: String?) {
+    fun remove(token: String) {
         val key = String.format(TOKEN_CACHE_PREFIX, token)
         super.delete(key)
     }
