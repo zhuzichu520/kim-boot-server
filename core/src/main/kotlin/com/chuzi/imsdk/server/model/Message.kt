@@ -17,7 +17,7 @@ data class Message(
     var timestamp: Long = System.currentTimeMillis()
 ) : Transportable, Serializable {
     override fun getBody(): ByteArray {
-        val builder: MessageProto.Model.Builder = MessageProto.Model.newBuilder()
+        val builder: MessageProto.Message.Builder = MessageProto.Message.newBuilder()
         builder.setId(id)
         builder.setAction(action)
         builder.setSender(sender)

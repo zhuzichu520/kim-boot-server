@@ -14,8 +14,8 @@ public final class SentBodyProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface ModelOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.chuzi.imsdk.server.model.proto.Model)
+  public interface SentBodyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.chuzi.imsdk.server.model.proto.SentBody)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -59,6 +59,7 @@ public final class SentBodyProto {
     /**
      * <code>map&lt;string, string&gt; data = 3;</code>
      */
+
     /* nullable */
 java.lang.String getDataOrDefault(
         java.lang.String key,
@@ -67,22 +68,23 @@ java.lang.String defaultValue);
     /**
      * <code>map&lt;string, string&gt; data = 3;</code>
      */
+
     java.lang.String getDataOrThrow(
         java.lang.String key);
   }
   /**
-   * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Model}
+   * Protobuf type {@code com.chuzi.imsdk.server.model.proto.SentBody}
    */
-  public static final class Model extends
+  public static final class SentBody extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.chuzi.imsdk.server.model.proto.Model)
-      ModelOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.chuzi.imsdk.server.model.proto.SentBody)
+      SentBodyOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Model.newBuilder() to construct.
-    private Model(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SentBody.newBuilder() to construct.
+    private SentBody(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Model() {
+    private SentBody() {
       key_ = "";
     }
 
@@ -90,12 +92,17 @@ java.lang.String defaultValue);
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Model();
+      return new SentBody();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+      return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -113,14 +120,13 @@ java.lang.String defaultValue);
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable
+      return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_SentBody_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.class, com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.Builder.class);
+              com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.class, com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.Builder.class);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object key_ = "";
+    private volatile java.lang.Object key_;
     /**
      * <code>string key = 1;</code>
      * @return The key.
@@ -158,7 +164,7 @@ java.lang.String defaultValue);
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 2;
-    private long timestamp_ = 0L;
+    private long timestamp_;
     /**
      * <code>int64 timestamp = 2;</code>
      * @return The timestamp.
@@ -174,13 +180,12 @@ java.lang.String defaultValue);
           java.lang.String, java.lang.String> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.String>newDefaultInstance(
-                  com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_DataEntry_descriptor, 
+                  com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_SentBody_DataEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
-    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> data_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -191,12 +196,14 @@ java.lang.String defaultValue);
       }
       return data_;
     }
+
     public int getDataCount() {
       return internalGetData().getMap().size();
     }
     /**
      * <code>map&lt;string, string&gt; data = 3;</code>
      */
+
     @java.lang.Override
     public boolean containsData(
         java.lang.String key) {
@@ -215,6 +222,7 @@ java.lang.String defaultValue);
      * <code>map&lt;string, string&gt; data = 3;</code>
      */
     @java.lang.Override
+
     public java.util.Map<java.lang.String, java.lang.String> getDataMap() {
       return internalGetData().getMap();
     }
@@ -222,11 +230,10 @@ java.lang.String defaultValue);
      * <code>map&lt;string, string&gt; data = 3;</code>
      */
     @java.lang.Override
-    public /* nullable */
-java.lang.String getDataOrDefault(
+
+    public java.lang.String getDataOrDefault(
         java.lang.String key,
-        /* nullable */
-java.lang.String defaultValue) {
+        java.lang.String defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.String> map =
           internalGetData().getMap();
@@ -236,6 +243,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; data = 3;</code>
      */
     @java.lang.Override
+
     public java.lang.String getDataOrThrow(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -309,10 +317,10 @@ java.lang.String defaultValue) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.chuzi.imsdk.server.model.proto.SentBodyProto.Model)) {
+      if (!(obj instanceof com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody)) {
         return super.equals(obj);
       }
-      com.chuzi.imsdk.server.model.proto.SentBodyProto.Model other = (com.chuzi.imsdk.server.model.proto.SentBodyProto.Model) obj;
+      com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody other = (com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody) obj;
 
       if (!getKey()
           .equals(other.getKey())) return false;
@@ -345,71 +353,69 @@ java.lang.String defaultValue) {
       return hash;
     }
 
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(byte[] data)
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(java.io.InputStream input)
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseDelimitedFrom(java.io.InputStream input)
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseDelimitedFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -422,7 +428,7 @@ java.lang.String defaultValue) {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.chuzi.imsdk.server.model.proto.SentBodyProto.Model prototype) {
+    public static Builder newBuilder(com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -438,15 +444,15 @@ java.lang.String defaultValue) {
       return builder;
     }
     /**
-     * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Model}
+     * Protobuf type {@code com.chuzi.imsdk.server.model.proto.SentBody}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.chuzi.imsdk.server.model.proto.Model)
-        com.chuzi.imsdk.server.model.proto.SentBodyProto.ModelOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.chuzi.imsdk.server.model.proto.SentBody)
+        com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBodyOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+        return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -474,12 +480,12 @@ java.lang.String defaultValue) {
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable
+        return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_SentBody_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.class, com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.Builder.class);
+                com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.class, com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.Builder.class);
       }
 
-      // Construct using com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.newBuilder()
+      // Construct using com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.newBuilder()
       private Builder() {
 
       }
@@ -492,9 +498,10 @@ java.lang.String defaultValue) {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        bitField0_ = 0;
         key_ = "";
+
         timestamp_ = 0L;
+
         internalGetMutableData().clear();
         return this;
       }
@@ -502,17 +509,17 @@ java.lang.String defaultValue) {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+        return com.chuzi.imsdk.server.model.proto.SentBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor;
       }
 
       @java.lang.Override
-      public com.chuzi.imsdk.server.model.proto.SentBodyProto.Model getDefaultInstanceForType() {
-        return com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.getDefaultInstance();
+      public com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody getDefaultInstanceForType() {
+        return com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.chuzi.imsdk.server.model.proto.SentBodyProto.Model build() {
-        com.chuzi.imsdk.server.model.proto.SentBodyProto.Model result = buildPartial();
+      public com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody build() {
+        com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -520,25 +527,15 @@ java.lang.String defaultValue) {
       }
 
       @java.lang.Override
-      public com.chuzi.imsdk.server.model.proto.SentBodyProto.Model buildPartial() {
-        com.chuzi.imsdk.server.model.proto.SentBodyProto.Model result = new com.chuzi.imsdk.server.model.proto.SentBodyProto.Model(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+      public com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody buildPartial() {
+        com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody result = new com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody(this);
+        int from_bitField0_ = bitField0_;
+        result.key_ = key_;
+        result.timestamp_ = timestamp_;
+        result.data_ = internalGetData();
+        result.data_.makeImmutable();
         onBuilt();
         return result;
-      }
-
-      private void buildPartial0(com.chuzi.imsdk.server.model.proto.SentBodyProto.Model result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.key_ = key_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.timestamp_ = timestamp_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.data_ = internalGetData();
-          result.data_.makeImmutable();
-        }
       }
 
       @java.lang.Override
@@ -575,19 +572,18 @@ java.lang.String defaultValue) {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.chuzi.imsdk.server.model.proto.SentBodyProto.Model) {
-          return mergeFrom((com.chuzi.imsdk.server.model.proto.SentBodyProto.Model)other);
+        if (other instanceof com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody) {
+          return mergeFrom((com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.chuzi.imsdk.server.model.proto.SentBodyProto.Model other) {
-        if (other == com.chuzi.imsdk.server.model.proto.SentBodyProto.Model.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody other) {
+        if (other == com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody.getDefaultInstance()) return this;
         if (!other.getKey().isEmpty()) {
           key_ = other.key_;
-          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getTimestamp() != 0L) {
@@ -595,7 +591,6 @@ java.lang.String defaultValue) {
         }
         internalGetMutableData().mergeFrom(
             other.internalGetData());
-        bitField0_ |= 0x00000004;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -624,12 +619,12 @@ java.lang.String defaultValue) {
                 break;
               case 10: {
                 key_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
+
                 break;
               } // case 10
               case 16: {
                 timestamp_ = input.readInt64();
-                bitField0_ |= 0x00000002;
+
                 break;
               } // case 16
               case 26: {
@@ -638,7 +633,6 @@ java.lang.String defaultValue) {
                     DataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableData().getMutableMap().put(
                     data__.getKey(), data__.getValue());
-                bitField0_ |= 0x00000004;
                 break;
               } // case 26
               default: {
@@ -699,9 +693,11 @@ java.lang.String defaultValue) {
        */
       public Builder setKey(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         key_ = value;
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -710,8 +706,8 @@ java.lang.String defaultValue) {
        * @return This builder for chaining.
        */
       public Builder clearKey() {
+        
         key_ = getDefaultInstance().getKey();
-        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -722,10 +718,12 @@ java.lang.String defaultValue) {
        */
       public Builder setKeyBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         key_ = value;
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -745,9 +743,8 @@ java.lang.String defaultValue) {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-
+        
         timestamp_ = value;
-        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -756,7 +753,7 @@ java.lang.String defaultValue) {
        * @return This builder for chaining.
        */
       public Builder clearTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         timestamp_ = 0L;
         onChanged();
         return this;
@@ -765,7 +762,7 @@ java.lang.String defaultValue) {
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.String> data_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-          internalGetData() {
+      internalGetData() {
         if (data_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               DataDefaultEntryHolder.defaultEntry);
@@ -773,7 +770,8 @@ java.lang.String defaultValue) {
         return data_;
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-          internalGetMutableData() {
+      internalGetMutableData() {
+        onChanged();;
         if (data_ == null) {
           data_ = com.google.protobuf.MapField.newMapField(
               DataDefaultEntryHolder.defaultEntry);
@@ -781,16 +779,16 @@ java.lang.String defaultValue) {
         if (!data_.isMutable()) {
           data_ = data_.copy();
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
         return data_;
       }
+
       public int getDataCount() {
         return internalGetData().getMap().size();
       }
       /**
        * <code>map&lt;string, string&gt; data = 3;</code>
        */
+
       @java.lang.Override
       public boolean containsData(
           java.lang.String key) {
@@ -809,6 +807,7 @@ java.lang.String defaultValue) {
        * <code>map&lt;string, string&gt; data = 3;</code>
        */
       @java.lang.Override
+
       public java.util.Map<java.lang.String, java.lang.String> getDataMap() {
         return internalGetData().getMap();
       }
@@ -816,11 +815,10 @@ java.lang.String defaultValue) {
        * <code>map&lt;string, string&gt; data = 3;</code>
        */
       @java.lang.Override
-      public /* nullable */
-java.lang.String getDataOrDefault(
+
+      public java.lang.String getDataOrDefault(
           java.lang.String key,
-          /* nullable */
-java.lang.String defaultValue) {
+          java.lang.String defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.String> map =
             internalGetData().getMap();
@@ -830,6 +828,7 @@ java.lang.String defaultValue) {
        * <code>map&lt;string, string&gt; data = 3;</code>
        */
       @java.lang.Override
+
       public java.lang.String getDataOrThrow(
           java.lang.String key) {
         if (key == null) { throw new NullPointerException("map key"); }
@@ -840,8 +839,8 @@ java.lang.String defaultValue) {
         }
         return map.get(key);
       }
+
       public Builder clearData() {
-        bitField0_ = (bitField0_ & ~0x00000004);
         internalGetMutableData().getMutableMap()
             .clear();
         return this;
@@ -849,6 +848,7 @@ java.lang.String defaultValue) {
       /**
        * <code>map&lt;string, string&gt; data = 3;</code>
        */
+
       public Builder removeData(
           java.lang.String key) {
         if (key == null) { throw new NullPointerException("map key"); }
@@ -861,8 +861,7 @@ java.lang.String defaultValue) {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.String>
-          getMutableData() {
-        bitField0_ |= 0x00000004;
+      getMutableData() {
         return internalGetMutableData().getMutableMap();
       }
       /**
@@ -872,20 +871,22 @@ java.lang.String defaultValue) {
           java.lang.String key,
           java.lang.String value) {
         if (key == null) { throw new NullPointerException("map key"); }
-        if (value == null) { throw new NullPointerException("map value"); }
+        if (value == null) {
+  throw new NullPointerException("map value");
+}
+
         internalGetMutableData().getMutableMap()
             .put(key, value);
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
        * <code>map&lt;string, string&gt; data = 3;</code>
        */
+
       public Builder putAllData(
           java.util.Map<java.lang.String, java.lang.String> values) {
         internalGetMutableData().getMutableMap()
             .putAll(values);
-        bitField0_ |= 0x00000004;
         return this;
       }
       @java.lang.Override
@@ -901,23 +902,23 @@ java.lang.String defaultValue) {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.chuzi.imsdk.server.model.proto.Model)
+      // @@protoc_insertion_point(builder_scope:com.chuzi.imsdk.server.model.proto.SentBody)
     }
 
-    // @@protoc_insertion_point(class_scope:com.chuzi.imsdk.server.model.proto.Model)
-    private static final com.chuzi.imsdk.server.model.proto.SentBodyProto.Model DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.chuzi.imsdk.server.model.proto.SentBody)
+    private static final com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.chuzi.imsdk.server.model.proto.SentBodyProto.Model();
+      DEFAULT_INSTANCE = new com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody();
     }
 
-    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.Model getDefaultInstance() {
+    public static com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Model>
-        PARSER = new com.google.protobuf.AbstractParser<Model>() {
+    private static final com.google.protobuf.Parser<SentBody>
+        PARSER = new com.google.protobuf.AbstractParser<SentBody>() {
       @java.lang.Override
-      public Model parsePartialFrom(
+      public SentBody parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -936,32 +937,32 @@ java.lang.String defaultValue) {
       }
     };
 
-    public static com.google.protobuf.Parser<Model> parser() {
+    public static com.google.protobuf.Parser<SentBody> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Model> getParserForType() {
+    public com.google.protobuf.Parser<SentBody> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.chuzi.imsdk.server.model.proto.SentBodyProto.Model getDefaultInstanceForType() {
+    public com.chuzi.imsdk.server.model.proto.SentBodyProto.SentBody getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+    internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable;
+      internal_static_com_chuzi_imsdk_server_model_proto_SentBody_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_DataEntry_descriptor;
+    internal_static_com_chuzi_imsdk_server_model_proto_SentBody_DataEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_chuzi_imsdk_server_model_proto_Model_DataEntry_fieldAccessorTable;
+      internal_static_com_chuzi_imsdk_server_model_proto_SentBody_DataEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -972,27 +973,27 @@ java.lang.String defaultValue) {
   static {
     java.lang.String[] descriptorData = {
       "\n\016SentBody.proto\022\"com.chuzi.imsdk.server" +
-      ".model.proto\"\227\001\n\005Model\022\013\n\003key\030\001 \001(\t\022\021\n\tt" +
-      "imestamp\030\002 \001(\003\022A\n\004data\030\003 \003(\01323.com.chuzi" +
-      ".imsdk.server.model.proto.Model.DataEntr" +
-      "y\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\t:\0028\001B\017B\rSentBodyProtob\006proto3"
+      ".model.proto\"\235\001\n\010SentBody\022\013\n\003key\030\001 \001(\t\022\021" +
+      "\n\ttimestamp\030\002 \001(\003\022D\n\004data\030\003 \003(\01326.com.ch" +
+      "uzi.imsdk.server.model.proto.SentBody.Da" +
+      "taEntry\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
+      "ue\030\002 \001(\t:\0028\001B\017B\rSentBodyProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor =
+    internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable = new
+    internal_static_com_chuzi_imsdk_server_model_proto_SentBody_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor,
+        internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor,
         new java.lang.String[] { "Key", "Timestamp", "Data", });
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_DataEntry_descriptor =
-      internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor.getNestedTypes().get(0);
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_DataEntry_fieldAccessorTable = new
+    internal_static_com_chuzi_imsdk_server_model_proto_SentBody_DataEntry_descriptor =
+      internal_static_com_chuzi_imsdk_server_model_proto_SentBody_descriptor.getNestedTypes().get(0);
+    internal_static_com_chuzi_imsdk_server_model_proto_SentBody_DataEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_chuzi_imsdk_server_model_proto_Model_DataEntry_descriptor,
+        internal_static_com_chuzi_imsdk_server_model_proto_SentBody_DataEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
 

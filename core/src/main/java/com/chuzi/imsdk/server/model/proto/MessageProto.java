@@ -14,8 +14,8 @@ public final class MessageProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface ModelOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.chuzi.imsdk.server.model.proto.Model)
+  public interface MessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.chuzi.imsdk.server.model.proto.Message)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -115,18 +115,18 @@ public final class MessageProto {
     long getTimestamp();
   }
   /**
-   * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Model}
+   * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Message}
    */
-  public static final class Model extends
+  public static final class Message extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.chuzi.imsdk.server.model.proto.Model)
-      ModelOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.chuzi.imsdk.server.model.proto.Message)
+      MessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Model.newBuilder() to construct.
-    private Model(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Message.newBuilder() to construct.
+    private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Model() {
+    private Message() {
       action_ = "";
       content_ = "";
       sender_ = "";
@@ -140,24 +140,29 @@ public final class MessageProto {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Model();
+      return new Message();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+      return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable
+      return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Message_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.chuzi.imsdk.server.model.proto.MessageProto.Model.class, com.chuzi.imsdk.server.model.proto.MessageProto.Model.Builder.class);
+              com.chuzi.imsdk.server.model.proto.MessageProto.Message.class, com.chuzi.imsdk.server.model.proto.MessageProto.Message.Builder.class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private long id_ = 0L;
+    private long id_;
     /**
      * <code>int64 id = 1;</code>
      * @return The id.
@@ -168,8 +173,7 @@ public final class MessageProto {
     }
 
     public static final int ACTION_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object action_ = "";
+    private volatile java.lang.Object action_;
     /**
      * <code>string action = 2;</code>
      * @return The action.
@@ -207,8 +211,7 @@ public final class MessageProto {
     }
 
     public static final int CONTENT_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object content_ = "";
+    private volatile java.lang.Object content_;
     /**
      * <code>string content = 3;</code>
      * @return The content.
@@ -246,8 +249,7 @@ public final class MessageProto {
     }
 
     public static final int SENDER_FIELD_NUMBER = 4;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object sender_ = "";
+    private volatile java.lang.Object sender_;
     /**
      * <code>string sender = 4;</code>
      * @return The sender.
@@ -285,8 +287,7 @@ public final class MessageProto {
     }
 
     public static final int RECEIVER_FIELD_NUMBER = 5;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object receiver_ = "";
+    private volatile java.lang.Object receiver_;
     /**
      * <code>string receiver = 5;</code>
      * @return The receiver.
@@ -324,8 +325,7 @@ public final class MessageProto {
     }
 
     public static final int EXTRA_FIELD_NUMBER = 6;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object extra_ = "";
+    private volatile java.lang.Object extra_;
     /**
      * <code>string extra = 6;</code>
      * @return The extra.
@@ -363,8 +363,7 @@ public final class MessageProto {
     }
 
     public static final int TITLE_FIELD_NUMBER = 7;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object title_ = "";
+    private volatile java.lang.Object title_;
     /**
      * <code>string title = 7;</code>
      * @return The title.
@@ -402,8 +401,7 @@ public final class MessageProto {
     }
 
     public static final int FORMAT_FIELD_NUMBER = 8;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object format_ = "";
+    private volatile java.lang.Object format_;
     /**
      * <code>string format = 8;</code>
      * @return The format.
@@ -441,7 +439,7 @@ public final class MessageProto {
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 9;
-    private long timestamp_ = 0L;
+    private long timestamp_;
     /**
      * <code>int64 timestamp = 9;</code>
      * @return The timestamp.
@@ -540,10 +538,10 @@ public final class MessageProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.chuzi.imsdk.server.model.proto.MessageProto.Model)) {
+      if (!(obj instanceof com.chuzi.imsdk.server.model.proto.MessageProto.Message)) {
         return super.equals(obj);
       }
-      com.chuzi.imsdk.server.model.proto.MessageProto.Model other = (com.chuzi.imsdk.server.model.proto.MessageProto.Model) obj;
+      com.chuzi.imsdk.server.model.proto.MessageProto.Message other = (com.chuzi.imsdk.server.model.proto.MessageProto.Message) obj;
 
       if (getId()
           != other.getId()) return false;
@@ -599,71 +597,69 @@ public final class MessageProto {
       return hash;
     }
 
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(byte[] data)
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(java.io.InputStream input)
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseDelimitedFrom(java.io.InputStream input)
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseDelimitedFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model parseFrom(
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -676,7 +672,7 @@ public final class MessageProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.chuzi.imsdk.server.model.proto.MessageProto.Model prototype) {
+    public static Builder newBuilder(com.chuzi.imsdk.server.model.proto.MessageProto.Message prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -692,26 +688,26 @@ public final class MessageProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Model}
+     * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Message}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.chuzi.imsdk.server.model.proto.Model)
-        com.chuzi.imsdk.server.model.proto.MessageProto.ModelOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.chuzi.imsdk.server.model.proto.Message)
+        com.chuzi.imsdk.server.model.proto.MessageProto.MessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+        return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable
+        return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Message_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.chuzi.imsdk.server.model.proto.MessageProto.Model.class, com.chuzi.imsdk.server.model.proto.MessageProto.Model.Builder.class);
+                com.chuzi.imsdk.server.model.proto.MessageProto.Message.class, com.chuzi.imsdk.server.model.proto.MessageProto.Message.Builder.class);
       }
 
-      // Construct using com.chuzi.imsdk.server.model.proto.MessageProto.Model.newBuilder()
+      // Construct using com.chuzi.imsdk.server.model.proto.MessageProto.Message.newBuilder()
       private Builder() {
 
       }
@@ -724,33 +720,41 @@ public final class MessageProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        bitField0_ = 0;
         id_ = 0L;
+
         action_ = "";
+
         content_ = "";
+
         sender_ = "";
+
         receiver_ = "";
+
         extra_ = "";
+
         title_ = "";
+
         format_ = "";
+
         timestamp_ = 0L;
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+        return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor;
       }
 
       @java.lang.Override
-      public com.chuzi.imsdk.server.model.proto.MessageProto.Model getDefaultInstanceForType() {
-        return com.chuzi.imsdk.server.model.proto.MessageProto.Model.getDefaultInstance();
+      public com.chuzi.imsdk.server.model.proto.MessageProto.Message getDefaultInstanceForType() {
+        return com.chuzi.imsdk.server.model.proto.MessageProto.Message.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.chuzi.imsdk.server.model.proto.MessageProto.Model build() {
-        com.chuzi.imsdk.server.model.proto.MessageProto.Model result = buildPartial();
+      public com.chuzi.imsdk.server.model.proto.MessageProto.Message build() {
+        com.chuzi.imsdk.server.model.proto.MessageProto.Message result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -758,42 +762,19 @@ public final class MessageProto {
       }
 
       @java.lang.Override
-      public com.chuzi.imsdk.server.model.proto.MessageProto.Model buildPartial() {
-        com.chuzi.imsdk.server.model.proto.MessageProto.Model result = new com.chuzi.imsdk.server.model.proto.MessageProto.Model(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+      public com.chuzi.imsdk.server.model.proto.MessageProto.Message buildPartial() {
+        com.chuzi.imsdk.server.model.proto.MessageProto.Message result = new com.chuzi.imsdk.server.model.proto.MessageProto.Message(this);
+        result.id_ = id_;
+        result.action_ = action_;
+        result.content_ = content_;
+        result.sender_ = sender_;
+        result.receiver_ = receiver_;
+        result.extra_ = extra_;
+        result.title_ = title_;
+        result.format_ = format_;
+        result.timestamp_ = timestamp_;
         onBuilt();
         return result;
-      }
-
-      private void buildPartial0(com.chuzi.imsdk.server.model.proto.MessageProto.Model result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.id_ = id_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.action_ = action_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.content_ = content_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.sender_ = sender_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.receiver_ = receiver_;
-        }
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.extra_ = extra_;
-        }
-        if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.title_ = title_;
-        }
-        if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.format_ = format_;
-        }
-        if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.timestamp_ = timestamp_;
-        }
       }
 
       @java.lang.Override
@@ -830,52 +811,45 @@ public final class MessageProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.chuzi.imsdk.server.model.proto.MessageProto.Model) {
-          return mergeFrom((com.chuzi.imsdk.server.model.proto.MessageProto.Model)other);
+        if (other instanceof com.chuzi.imsdk.server.model.proto.MessageProto.Message) {
+          return mergeFrom((com.chuzi.imsdk.server.model.proto.MessageProto.Message)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.chuzi.imsdk.server.model.proto.MessageProto.Model other) {
-        if (other == com.chuzi.imsdk.server.model.proto.MessageProto.Model.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.chuzi.imsdk.server.model.proto.MessageProto.Message other) {
+        if (other == com.chuzi.imsdk.server.model.proto.MessageProto.Message.getDefaultInstance()) return this;
         if (other.getId() != 0L) {
           setId(other.getId());
         }
         if (!other.getAction().isEmpty()) {
           action_ = other.action_;
-          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getContent().isEmpty()) {
           content_ = other.content_;
-          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (!other.getSender().isEmpty()) {
           sender_ = other.sender_;
-          bitField0_ |= 0x00000008;
           onChanged();
         }
         if (!other.getReceiver().isEmpty()) {
           receiver_ = other.receiver_;
-          bitField0_ |= 0x00000010;
           onChanged();
         }
         if (!other.getExtra().isEmpty()) {
           extra_ = other.extra_;
-          bitField0_ |= 0x00000020;
           onChanged();
         }
         if (!other.getTitle().isEmpty()) {
           title_ = other.title_;
-          bitField0_ |= 0x00000040;
           onChanged();
         }
         if (!other.getFormat().isEmpty()) {
           format_ = other.format_;
-          bitField0_ |= 0x00000080;
           onChanged();
         }
         if (other.getTimestamp() != 0L) {
@@ -909,47 +883,47 @@ public final class MessageProto {
                 break;
               case 8: {
                 id_ = input.readInt64();
-                bitField0_ |= 0x00000001;
+
                 break;
               } // case 8
               case 18: {
                 action_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000002;
+
                 break;
               } // case 18
               case 26: {
                 content_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000004;
+
                 break;
               } // case 26
               case 34: {
                 sender_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000008;
+
                 break;
               } // case 34
               case 42: {
                 receiver_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000010;
+
                 break;
               } // case 42
               case 50: {
                 extra_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000020;
+
                 break;
               } // case 50
               case 58: {
                 title_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000040;
+
                 break;
               } // case 58
               case 66: {
                 format_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000080;
+
                 break;
               } // case 66
               case 72: {
                 timestamp_ = input.readInt64();
-                bitField0_ |= 0x00000100;
+
                 break;
               } // case 72
               default: {
@@ -967,7 +941,6 @@ public final class MessageProto {
         } // finally
         return this;
       }
-      private int bitField0_;
 
       private long id_ ;
       /**
@@ -984,9 +957,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder setId(long value) {
-
+        
         id_ = value;
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -995,7 +967,7 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = 0L;
         onChanged();
         return this;
@@ -1042,9 +1014,11 @@ public final class MessageProto {
        */
       public Builder setAction(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         action_ = value;
-        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1053,8 +1027,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearAction() {
+        
         action_ = getDefaultInstance().getAction();
-        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -1065,10 +1039,12 @@ public final class MessageProto {
        */
       public Builder setActionBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         action_ = value;
-        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1114,9 +1090,11 @@ public final class MessageProto {
        */
       public Builder setContent(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         content_ = value;
-        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1125,8 +1103,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearContent() {
+        
         content_ = getDefaultInstance().getContent();
-        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1137,10 +1115,12 @@ public final class MessageProto {
        */
       public Builder setContentBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         content_ = value;
-        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1186,9 +1166,11 @@ public final class MessageProto {
        */
       public Builder setSender(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         sender_ = value;
-        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1197,8 +1179,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearSender() {
+        
         sender_ = getDefaultInstance().getSender();
-        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -1209,10 +1191,12 @@ public final class MessageProto {
        */
       public Builder setSenderBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         sender_ = value;
-        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1258,9 +1242,11 @@ public final class MessageProto {
        */
       public Builder setReceiver(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         receiver_ = value;
-        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1269,8 +1255,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearReceiver() {
+        
         receiver_ = getDefaultInstance().getReceiver();
-        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -1281,10 +1267,12 @@ public final class MessageProto {
        */
       public Builder setReceiverBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         receiver_ = value;
-        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1330,9 +1318,11 @@ public final class MessageProto {
        */
       public Builder setExtra(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         extra_ = value;
-        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1341,8 +1331,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearExtra() {
+        
         extra_ = getDefaultInstance().getExtra();
-        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -1353,10 +1343,12 @@ public final class MessageProto {
        */
       public Builder setExtraBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         extra_ = value;
-        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1402,9 +1394,11 @@ public final class MessageProto {
        */
       public Builder setTitle(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         title_ = value;
-        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1413,8 +1407,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearTitle() {
+        
         title_ = getDefaultInstance().getTitle();
-        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -1425,10 +1419,12 @@ public final class MessageProto {
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         title_ = value;
-        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1474,9 +1470,11 @@ public final class MessageProto {
        */
       public Builder setFormat(
           java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         format_ = value;
-        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -1485,8 +1483,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearFormat() {
+        
         format_ = getDefaultInstance().getFormat();
-        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -1497,10 +1495,12 @@ public final class MessageProto {
        */
       public Builder setFormatBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
         format_ = value;
-        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -1520,9 +1520,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-
+        
         timestamp_ = value;
-        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -1531,7 +1530,7 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        
         timestamp_ = 0L;
         onChanged();
         return this;
@@ -1549,23 +1548,23 @@ public final class MessageProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.chuzi.imsdk.server.model.proto.Model)
+      // @@protoc_insertion_point(builder_scope:com.chuzi.imsdk.server.model.proto.Message)
     }
 
-    // @@protoc_insertion_point(class_scope:com.chuzi.imsdk.server.model.proto.Model)
-    private static final com.chuzi.imsdk.server.model.proto.MessageProto.Model DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.chuzi.imsdk.server.model.proto.Message)
+    private static final com.chuzi.imsdk.server.model.proto.MessageProto.Message DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.chuzi.imsdk.server.model.proto.MessageProto.Model();
+      DEFAULT_INSTANCE = new com.chuzi.imsdk.server.model.proto.MessageProto.Message();
     }
 
-    public static com.chuzi.imsdk.server.model.proto.MessageProto.Model getDefaultInstance() {
+    public static com.chuzi.imsdk.server.model.proto.MessageProto.Message getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Model>
-        PARSER = new com.google.protobuf.AbstractParser<Model>() {
+    private static final com.google.protobuf.Parser<Message>
+        PARSER = new com.google.protobuf.AbstractParser<Message>() {
       @java.lang.Override
-      public Model parsePartialFrom(
+      public Message parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1584,27 +1583,27 @@ public final class MessageProto {
       }
     };
 
-    public static com.google.protobuf.Parser<Model> parser() {
+    public static com.google.protobuf.Parser<Message> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Model> getParserForType() {
+    public com.google.protobuf.Parser<Message> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.chuzi.imsdk.server.model.proto.MessageProto.Model getDefaultInstanceForType() {
+    public com.chuzi.imsdk.server.model.proto.MessageProto.Message getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor;
+    internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable;
+      internal_static_com_chuzi_imsdk_server_model_proto_Message_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1615,21 +1614,21 @@ public final class MessageProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\rMessage.proto\022\"com.chuzi.imsdk.server." +
-      "model.proto\"\227\001\n\005Model\022\n\n\002id\030\001 \001(\003\022\016\n\006act" +
-      "ion\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\016\n\006sender\030\004 \001" +
-      "(\t\022\020\n\010receiver\030\005 \001(\t\022\r\n\005extra\030\006 \001(\t\022\r\n\005t" +
-      "itle\030\007 \001(\t\022\016\n\006format\030\010 \001(\t\022\021\n\ttimestamp\030" +
-      "\t \001(\003B\016B\014MessageProtob\006proto3"
+      "model.proto\"\231\001\n\007Message\022\n\n\002id\030\001 \001(\003\022\016\n\006a" +
+      "ction\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\016\n\006sender\030\004" +
+      " \001(\t\022\020\n\010receiver\030\005 \001(\t\022\r\n\005extra\030\006 \001(\t\022\r\n" +
+      "\005title\030\007 \001(\t\022\016\n\006format\030\010 \001(\t\022\021\n\ttimestam" +
+      "p\030\t \001(\003B\016B\014MessageProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor =
+    internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_chuzi_imsdk_server_model_proto_Model_fieldAccessorTable = new
+    internal_static_com_chuzi_imsdk_server_model_proto_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_chuzi_imsdk_server_model_proto_Model_descriptor,
+        internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor,
         new java.lang.String[] { "Id", "Action", "Content", "Sender", "Receiver", "Extra", "Title", "Format", "Timestamp", });
   }
 

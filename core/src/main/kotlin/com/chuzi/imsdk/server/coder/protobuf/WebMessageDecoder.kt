@@ -36,7 +36,7 @@ class WebMessageDecoder : MessageToMessageDecoder<BinaryWebSocketFrame>() {
     @Throws(IOException::class)
     private fun getBody(buffer: ByteBuf?): SentBody {
         val inputStream: InputStream = ByteBufInputStream(buffer)
-        val proto: SentBodyProto.Model = SentBodyProto.Model.parseFrom(inputStream)
+        val proto: SentBodyProto.SentBody = SentBodyProto.SentBody.parseFrom(inputStream)
         val body = SentBody()
         body.data = proto.dataMap
         body.key = proto.key

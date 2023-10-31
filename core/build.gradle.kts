@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
     implementation("io.netty:netty-all:4.1.100.Final")
-    implementation("com.google.protobuf:protobuf-java:3.24.4")
+    implementation("com.google.protobuf:protobuf-java:3.20.3")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
     implementation("org.slf4j:slf4j-api:2.0.9")
 }

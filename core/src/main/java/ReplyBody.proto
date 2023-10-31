@@ -2,7 +2,7 @@ syntax = "proto3";
 package com.chuzi.imsdk.server.model.proto;
 option java_outer_classname="ReplyBodyProto";
 
-message Model {
+message ReplyBody {
    string key = 1;
    string code = 2;
    string message = 3;

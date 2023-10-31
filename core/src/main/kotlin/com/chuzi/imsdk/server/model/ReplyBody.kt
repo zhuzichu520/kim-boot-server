@@ -23,7 +23,7 @@ data class ReplyBody(
     }
 
     override fun getBody(): ByteArray {
-        val builder: ReplyBodyProto.Model.Builder = ReplyBodyProto.Model.newBuilder()
+        val builder: ReplyBodyProto.ReplyBody.Builder = ReplyBodyProto.ReplyBody.newBuilder()
         builder.setCode(code)
         if (message != null) {
             builder.setMessage(message)

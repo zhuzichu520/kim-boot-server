@@ -40,7 +40,7 @@ class AppMessageDecoder : ByteToMessageDecoder() {
             return Pong.getInstance()
         }
         if (DataType.SENT.value == type) {
-            val bodyProto: SentBodyProto.Model = SentBodyProto.Model.parseFrom(data)
+            val bodyProto: SentBodyProto.SentBody = SentBodyProto.SentBody.parseFrom(data)
             val body = SentBody()
             body.data = bodyProto.dataMap
             body.key = bodyProto.key

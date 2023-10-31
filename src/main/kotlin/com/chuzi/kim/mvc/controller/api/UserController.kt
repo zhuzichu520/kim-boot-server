@@ -1,13 +1,11 @@
 package com.chuzi.kim.mvc.controller.api
 
-import com.chuzi.kim.annotation.PassToken
+import com.chuzi.kim.annotation.LoginToken
 import com.chuzi.kim.entity.User
 import com.chuzi.kim.mvc.response.ResponseEntity
 import com.chuzi.kim.service.UserService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
-import io.swagger.v3.oas.annotations.Parameters
-import io.swagger.v3.oas.annotations.enums.ParameterIn
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.annotation.Resource
 import jakarta.validation.constraints.NotNull
@@ -27,7 +25,6 @@ class UserController {
     private lateinit var userService: UserService
 
     @Operation(method = "POST", description = "用户注册")
-    @PassToken
     @PostMapping(value = ["/register"])
     fun register(
         @NotNull(message = "账号不能为空")
@@ -51,7 +48,6 @@ class UserController {
 
 
     @Operation(method = "POST", description = "模拟登录")
-    @PassToken
     @PostMapping(value = ["/login"])
     fun login(
         @NotNull(message = "账号不能为空")
@@ -77,6 +73,7 @@ class UserController {
     }
 
     @Operation(method = "GET", description = "退出登录")
+    @LoginToken
     @GetMapping(value = ["/logout"])
     fun logout(
         @Parameter(hidden = true)

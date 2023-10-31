@@ -1,7 +1,8 @@
 syntax = "proto3";
 package com.chuzi.imsdk.server.model.proto;
 option java_outer_classname="MessageProto";
-message Model {
+
+message Message {
    int64 id = 1;
    string action = 2;
    string content = 3;

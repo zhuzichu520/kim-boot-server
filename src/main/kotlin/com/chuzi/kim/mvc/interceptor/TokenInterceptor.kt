@@ -2,7 +2,7 @@ package com.chuzi.kim.mvc.interceptor
 
 import com.chuzi.kim.annotation.AccessToken
 import com.chuzi.kim.annotation.Account
-import com.chuzi.kim.annotation.PassToken
+import com.chuzi.kim.annotation.LoginToken
 import com.chuzi.kim.component.exception.BizException
 import com.chuzi.kim.config.properties.KIMTokenProperties
 import com.chuzi.kim.service.AccessTokenService
@@ -30,31 +30,31 @@ class TokenInterceptor : HandlerInterceptor {
             return true
         }
         val method = handler.method
-        if (method.isAnnotationPresent(PassToken::class.java)) {
-            return true
+        if (method.isAnnotationPresent(LoginToken::class.java)) {
+            val token: String? = request.getHeader(HEADER_TOKEN)
+            if (token == null) {
+                response.status = HttpStatus.UNAUTHORIZED.value()
+                return false
+            }
+            val parseToken = accessTokenService.parseToken(token)
+            val account: String? = parseToken["account"]
+            if (account == null) {
+                response.status = HttpStatus.UNAUTHORIZED.value()
+                return false
+            }
+            request.setAttribute(Account::class.java.name, account)
+            request.setAttribute(AccessToken::class.java.name, token)
+            val timeOfUse: Long = System.currentTimeMillis() - (parseToken["timeStamp"] ?: "0").toLong()
+            return if (timeOfUse < tokenProperties.refreshTime.toMillis()) {
+                true
+            } else if (timeOfUse >= tokenProperties.refreshTime.toMillis() && timeOfUse < tokenProperties.expiresTime.toMillis()) {
+                response.setHeader(HEADER_TOKEN, accessTokenService.generate(account))
+                true
+            } else {
+                throw BizException(10010, "token已失效")
+            }
         }
-        val token: String? = request.getHeader(HEADER_TOKEN)
-        if (token == null) {
-            response.status = HttpStatus.UNAUTHORIZED.value()
-            return false
-        }
-        val parseToken = accessTokenService.parseToken(token)
-        val account: String? = parseToken["account"]
-        if (account == null) {
-            response.status = HttpStatus.UNAUTHORIZED.value()
-            return false
-        }
-        request.setAttribute(Account::class.java.getName(), account)
-        request.setAttribute(AccessToken::class.java.getName(), token)
-        val timeOfUse: Long = System.currentTimeMillis() - (parseToken["timeStamp"] ?: "0").toLong()
-        return if (timeOfUse < tokenProperties.refreshTime.toMillis()) {
-            true
-        } else if (timeOfUse >= tokenProperties.refreshTime.toMillis() && timeOfUse < tokenProperties.expiresTime.toMillis()) {
-            response.setHeader(HEADER_TOKEN, accessTokenService.generate(account))
-            true
-        } else {
-            throw BizException(10010, "token已失效")
-        }
+        return true
     }
 
     companion object {
