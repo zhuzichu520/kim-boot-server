@@ -21,7 +21,7 @@ class UserServiceImpl : UserService {
     private lateinit var accessTokenService: AccessTokenService
 
     override fun register(user: User) {
-        val optUser: Optional<User> = userRepository.findOne(Example.of(User().apply { account = user.account }))
+        val optUser: Optional<User> = userRepository.findOne(Example.of(User().apply { uid = user.uid }))
         if (optUser.isPresent) {
             throw BizException("账号已存在")
         }
@@ -32,14 +32,14 @@ class UserServiceImpl : UserService {
         val optUser: Optional<User> = userRepository.findOne(
             Example.of(User()
                 .apply {
-                    account = user.account
+                    uid = user.uid
                     password = user.password
                 })
         )
         if (optUser.isEmpty) {
             throw BizException("登录失败，账号或密码错误")
         }
-        return accessTokenService.generate(user.account)
+        return accessTokenService.generate(user.uid)
     }
 
 }

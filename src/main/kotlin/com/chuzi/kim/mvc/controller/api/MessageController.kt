@@ -24,18 +24,18 @@ class MessageController {
 
     @Operation(method = "POST", description = "发送消息")
     @Parameters(
-        Parameter(name = "sender", description = "发送者UID", `in` = ParameterIn.QUERY, required = true, example = ""),
+        Parameter(name = "sender", description = "发送者UID", `in` = ParameterIn.QUERY, required = true, example = "system"),
         Parameter(
             name = "receiver",
             description = "接收者UID",
             `in` = ParameterIn.QUERY,
             required = true,
-            example = ""
+            example = "zhuzichu"
         ),
-        Parameter(name = "action", description = "消息动作", `in` = ParameterIn.QUERY, required = true, example = ""),
+        Parameter(name = "action", description = "消息动作", `in` = ParameterIn.QUERY, required = true, example = "2"),
         Parameter(name = "title", description = "消息标题", `in` = ParameterIn.QUERY, example = ""),
-        Parameter(name = "content", description = "消息内容", `in` = ParameterIn.QUERY, example = ""),
-        Parameter(name = "format", description = "消息格式", `in` = ParameterIn.QUERY, example = ""),
+        Parameter(name = "content", description = "消息内容", `in` = ParameterIn.QUERY, example = "你好啊啊"),
+        Parameter(name = "format", description = "消息格式", `in` = ParameterIn.QUERY, example = "0"),
         Parameter(name = "extra", description = "扩展字段", `in` = ParameterIn.QUERY, example = "")
     )
     @PostMapping(value = ["/send"])

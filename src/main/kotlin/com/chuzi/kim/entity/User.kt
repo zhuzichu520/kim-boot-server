@@ -10,8 +10,8 @@ data class User(
     @Column(name = "id")
     var id: Long? = null,
 
-    @Column(name = "account", length = 32, nullable = false)
-    var account: String? = null,
+    @Column(name = "uid", length = 32, nullable = false)
+    var uid: String? = null,
 
     @Column(name = "password", length = 32, nullable = false)
     var password: String? = null,

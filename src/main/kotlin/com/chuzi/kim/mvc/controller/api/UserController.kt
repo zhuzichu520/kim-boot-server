@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*
 @Validated
 class UserController {
 
-
     @Resource
     private lateinit var userService: UserService
 
@@ -31,7 +30,7 @@ class UserController {
         @Length(min=4, max = 30, message = "用户名只能在4~30位之间")
         @Parameter(description = "用户账号", example = "18229858146")
         @RequestParam
-        account: String,
+        uid: String,
 
         @NotNull(message = "密码不能为空")
         @Length(min = 4, max = 30, message = "密码只能在4~30位之间")
@@ -40,21 +39,21 @@ class UserController {
         password: String
     ): ResponseEntity<*> {
         val user = User()
-        user.account = account
+        user.uid = uid
         user.password = password
         userService.register(user)
         return ResponseEntity.make()
     }
 
 
-    @Operation(method = "POST", description = "模拟登录")
+    @Operation(method = "POST", description = "登录")
     @PostMapping(value = ["/login"])
     fun login(
         @NotNull(message = "账号不能为空")
         @Length(min=4, max = 30, message = "用户名只能在4~30位之间")
         @Parameter(description = "用户账号", example = "18229858146")
         @RequestParam
-        account: String,
+        uid: String,
 
         @NotNull(message = "密码不能为空")
         @Length(min = 4, max = 30, message = "密码只能在4~30位之间")
@@ -63,7 +62,7 @@ class UserController {
         password: String
     ): ResponseEntity<*> {
         val user = User()
-        user.account = account
+        user.uid = uid
         user.password = password
         val token =  userService.login(user)
         val result: ResponseEntity<Map<String, Any>> = ResponseEntity()

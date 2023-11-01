@@ -74,7 +74,7 @@ springdoc:
     - com.chuzi.kim.mvc.controller.api
   swagger-ui:
     enabled: true
-    path: /swagger-ui.html
+    path: /api-ui
   api-docs:
     enabled: true
     path: /api-docs

@@ -33,7 +33,6 @@ data class ReplyBody(
         }
         builder.setKey(key)
         builder.setTimestamp(timestamp)
-
         return builder.build().toByteArray()
     }
 

@@ -1,7 +1,7 @@
 package com.chuzi.kim.config
 
 import com.chuzi.kim.mvc.resolver.TokenArgumentResolver
-import com.chuzi.kim.mvc.resolver.AccountArgumentResolver
+import com.chuzi.kim.mvc.resolver.UIDArgumentResolver
 import jakarta.annotation.Resource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -24,7 +24,7 @@ class MvcConfig : WebMvcConfigurer {
     }
 
     override fun addArgumentResolvers(argumentResolvers: MutableList<HandlerMethodArgumentResolver>) {
-        argumentResolvers.add(AccountArgumentResolver())
+        argumentResolvers.add(UIDArgumentResolver())
         argumentResolvers.add(TokenArgumentResolver())
     }
 

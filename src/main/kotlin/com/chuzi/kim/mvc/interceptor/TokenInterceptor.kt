@@ -1,7 +1,7 @@
 package com.chuzi.kim.mvc.interceptor
 
 import com.chuzi.kim.annotation.AccessToken
-import com.chuzi.kim.annotation.Account
+import com.chuzi.kim.annotation.UID
 import com.chuzi.kim.annotation.LoginToken
 import com.chuzi.kim.component.exception.BizException
 import com.chuzi.kim.config.properties.KIMTokenProperties
@@ -37,18 +37,18 @@ class TokenInterceptor : HandlerInterceptor {
                 return false
             }
             val parseToken = accessTokenService.parseToken(token)
-            val account: String? = parseToken["account"]
-            if (account == null) {
+            val uid: String? = parseToken["uid"]
+            if (uid == null) {
                 response.status = HttpStatus.UNAUTHORIZED.value()
                 return false
             }
-            request.setAttribute(Account::class.java.name, account)
+            request.setAttribute(UID::class.java.name, uid)
             request.setAttribute(AccessToken::class.java.name, token)
             val timeOfUse: Long = System.currentTimeMillis() - (parseToken["timeStamp"] ?: "0").toLong()
             return if (timeOfUse < tokenProperties.refreshTime.toMillis()) {
                 true
             } else if (timeOfUse >= tokenProperties.refreshTime.toMillis() && timeOfUse < tokenProperties.expiresTime.toMillis()) {
-                response.setHeader(HEADER_TOKEN, accessTokenService.generate(account))
+                response.setHeader(HEADER_TOKEN, accessTokenService.generate(uid))
                 true
             } else {
                 throw BizException(10010, "token已失效")

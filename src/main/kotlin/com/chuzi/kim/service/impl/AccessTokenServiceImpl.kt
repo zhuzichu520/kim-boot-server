@@ -14,9 +14,9 @@ class AccessTokenServiceImpl : AccessTokenService {
     @Resource
     private lateinit var tokenProperties: KIMTokenProperties
 
-    override fun generate(account: String?): String {
+    override fun generate(uid: String?): String {
         return JWT.create()
-            .withClaim("account", account)
+            .withClaim("uid", uid)
             .withClaim("timeStamp",System.currentTimeMillis())
             .sign(Algorithm.HMAC256(tokenProperties.secretKey))
     }
@@ -25,9 +25,9 @@ class AccessTokenServiceImpl : AccessTokenService {
         val map = HashMap<String, String>()
         val jwt = JWT.require(Algorithm.HMAC256(tokenProperties.secretKey))
             .build().verify(token)
-        val account = jwt.getClaim("userId").asString()
+        val uid = jwt.getClaim("uid").asString()
         val timeStamp = jwt.getClaim("timeStamp").asLong().toString()
-        map["account"] = account
+        map["uid"] = uid
         map["timeStamp"] = timeStamp
         return map
     }
@@ -39,6 +39,10 @@ class AccessTokenServiceImpl : AccessTokenService {
         }catch (e:Exception){
             false
         }
+    }
+
+    override fun getUID(token: String): String? {
+       return parseToken(token)["uid"]
     }
 
 }

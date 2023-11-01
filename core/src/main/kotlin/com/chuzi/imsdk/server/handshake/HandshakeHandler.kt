@@ -8,7 +8,9 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler.HandshakeComplete
+import org.slf4j.LoggerFactory
 import java.util.function.Predicate
+
 
 @Sharable
 class HandshakeHandler(handshakePredicate: Predicate<HandshakeEvent>?) : ChannelInboundHandlerAdapter() {
@@ -35,7 +37,17 @@ class HandshakeHandler(handshakePredicate: Predicate<HandshakeEvent>?) : Channel
             return
         }
         if (!handshakePredicate.test(HandshakeEvent.of(event))) {
-            context.channel().writeAndFlush(failedBody).addListener(ChannelFutureListener.CLOSE)
+            val  channel = context.channel()
+            channel.writeAndFlush(failedBody).addListener(ChannelFutureListener {
+                Thread.sleep(30)
+                channel.close()
+            })
         }
     }
+
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(HandshakeHandler::class.java)
+    }
+
+
 }

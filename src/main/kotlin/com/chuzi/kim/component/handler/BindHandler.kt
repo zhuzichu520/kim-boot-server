@@ -10,6 +10,7 @@ import com.chuzi.imsdk.server.group.SessionGroup
 import com.chuzi.imsdk.server.handler.KIMRequestHandler
 import com.chuzi.imsdk.server.model.ReplyBody
 import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.kim.service.AccessTokenService
 import io.netty.channel.Channel
 import jakarta.annotation.Resource
 import org.springframework.http.HttpStatus
@@ -26,6 +27,9 @@ class BindHandler : KIMRequestHandler {
     @Resource
     private lateinit var signalRedisTemplate: SignalRedisTemplate
 
+    @Resource
+    private lateinit var accessTokenService: AccessTokenService
+
     override fun process(channel: Channel, body: SentBody) {
         if (sessionGroup.isManaged(channel)) {
             return
@@ -34,7 +38,8 @@ class BindHandler : KIMRequestHandler {
         reply.key = body.key
         reply.code = HttpStatus.OK.value().toString()
         reply.timestamp = System.currentTimeMillis()
-        val uid = body["uid"]
+        val token = body["token"]
+        val uid = accessTokenService.getUID(token)
         val session = Session()
         session.uid = uid
         session.nid = channel.attr(ChannelAttr.ID).get()
