@@ -6,8 +6,8 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "t_im_session")
 data class Session(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id")
-    var id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.UUID) @Column(name = "id")
+    var id: String? = null,
 
     @Column(name = "uid")
     var uid: String? = null,

@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional
 
 @Repository
 @Transactional(rollbackFor = [Exception::class])
-interface SessionRepository : JpaRepository<Session, Long> {
+interface SessionRepository : JpaRepository<Session, String> {
     @Modifying
     @Query("delete from Session where host = ?1 ")
     fun deleteAll(host: String?)
 
     @Modifying
     @Query("update Session set state = :state where id = :id")
-    fun updateState(id: Long, state: Int)
+    fun updateState(id: String, state: Int)
 
     @Modifying
     @Query("update Session set state = ${Session.STATE_APNS} where uid = ?1 and channel = ?2")

@@ -25,7 +25,7 @@ class SessionServiceImpl : SessionService {
         sessionRepository.save(session)
     }
 
-    override fun delete(id: Long) {
+    override fun delete(id: String) {
         sessionRepository.deleteById(id)
     }
 
@@ -33,7 +33,7 @@ class SessionServiceImpl : SessionService {
         sessionRepository.deleteAll(host)
     }
 
-    override fun updateState(id: Long, state: Int) {
+    override fun updateState(id: String, state: Int) {
         sessionRepository.updateState(id, state)
     }
 
