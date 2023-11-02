@@ -15,7 +15,7 @@ data class ResponseEntity<T>(
     @Parameter(description = "token")
     var token: String? = null,
     @Parameter(description = "时间戳")
-    var timestamp: Long? = null
+    var timestamp: Long? = System.currentTimeMillis()
 ) {
 
     companion object {

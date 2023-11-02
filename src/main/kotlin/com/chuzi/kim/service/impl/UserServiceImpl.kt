@@ -42,4 +42,12 @@ class UserServiceImpl : UserService {
         return accessTokenService.generate(user.uid)
     }
 
+    override fun getUserByUid(uid: String): User {
+        val optUser: Optional<User> = userRepository.findOne(Example.of(User().also { it.uid = uid }))
+        if(optUser.isEmpty){
+            throw BizException("没有找到用户信息")
+        }
+        return optUser.get()
+    }
+
 }

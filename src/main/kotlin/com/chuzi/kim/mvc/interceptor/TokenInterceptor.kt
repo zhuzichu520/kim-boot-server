@@ -31,17 +31,9 @@ class TokenInterceptor : HandlerInterceptor {
         }
         val method = handler.method
         if (method.isAnnotationPresent(LoginToken::class.java)) {
-            val token: String? = request.getHeader(HEADER_TOKEN)
-            if (token == null) {
-                response.status = HttpStatus.UNAUTHORIZED.value()
-                return false
-            }
+            val token: String = request.getHeader(HEADER_TOKEN) ?: throw BizException(10010, HEADER_TOKEN+"不能为空")
             val parseToken = accessTokenService.parseToken(token)
-            val uid: String? = parseToken["uid"]
-            if (uid == null) {
-                response.status = HttpStatus.UNAUTHORIZED.value()
-                return false
-            }
+            val uid: String = parseToken["uid"] ?: throw BizException(10010, HEADER_TOKEN+"异常，无法获取uid")
             request.setAttribute(UID::class.java.name, uid)
             request.setAttribute(AccessToken::class.java.name, token)
             val timeOfUse: Long = System.currentTimeMillis() - (parseToken["timeStamp"] ?: "0").toLong()

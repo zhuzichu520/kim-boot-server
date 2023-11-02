@@ -32,7 +32,7 @@ data class User(
     var mobile: String? = null,
 
     @Column(name = "birthday")
-    var birthday: String? = null,
+    var birthday: Long? = null,
 
     @Column(name = "gender")
     var gender: Int? = null,

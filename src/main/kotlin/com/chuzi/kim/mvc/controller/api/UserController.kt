@@ -1,6 +1,7 @@
 package com.chuzi.kim.mvc.controller.api
 
 import com.chuzi.kim.annotation.LoginToken
+import com.chuzi.kim.annotation.UID
 import com.chuzi.kim.entity.User
 import com.chuzi.kim.mvc.response.ResponseEntity
 import com.chuzi.kim.service.UserService
@@ -69,6 +70,16 @@ class UserController {
         result.token = token
         result.timestamp = System.currentTimeMillis()
         return result
+    }
+
+    @Operation(method = "POST", description = "获取个人信息")
+    @PostMapping(value = ["/profile"])
+    @LoginToken
+    fun profile(
+        @Parameter(hidden = true) @UID uid:String
+    ): ResponseEntity<*> {
+        val user:User = userService.getUserByUid(uid)
+        return ResponseEntity.ok(user)
     }
 
     @Operation(method = "GET", description = "退出登录")

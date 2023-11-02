@@ -1,5 +1,6 @@
 package com.chuzi.kim.component.exception
 
+import com.auth0.jwt.exceptions.JWTVerificationException
 import com.chuzi.kim.mvc.response.ResponseEntity
 import jakarta.validation.ConstraintViolationException
 import org.slf4j.LoggerFactory
@@ -17,7 +18,7 @@ class BizExceptionHandler {
     @ExceptionHandler(value = [BizException::class])
     fun bizExceptionHandler(e: BizException): ResponseEntity<*> {
         LOGGER.error("发生业务异常！ msg: -> ", e)
-        return ResponseEntity.make<Any>(500, e.message)
+        return ResponseEntity.make<Any>(e.code, e.message)
     }
 
     @ExceptionHandler(value = [NullPointerException::class])
@@ -39,9 +40,13 @@ class BizExceptionHandler {
         return ResponseEntity.make<Any>(400, e.message)
     }
 
+    @ExceptionHandler(value = [JWTVerificationException::class])
+    fun jwtVerificationExceptionHandler(e: JWTVerificationException): ResponseEntity<*> {
+        return ResponseEntity.make<Any>(10010, e.message)
+    }
+
     companion object {
         private val LOGGER = LoggerFactory.getLogger(BizExceptionHandler::class.java)
     }
-
 
 }
