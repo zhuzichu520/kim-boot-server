@@ -9,5 +9,6 @@ interface UserService {
     fun login(user: User):String
     fun getUserByUid(uid: String): User
 
+    fun searchUser(keyword: String): User?
 }
 

@@ -6,9 +6,9 @@ import jakarta.persistence.*
 @Table(name = "t_im_user")
 data class User(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    var id: Long? = null,
+    var id: String? = null,
 
     @Column(name = "uid", length = 32, nullable = false)
     var uid: String? = null,

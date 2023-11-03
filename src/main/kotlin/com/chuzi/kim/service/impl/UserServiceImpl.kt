@@ -50,4 +50,15 @@ class UserServiceImpl : UserService {
         return optUser.get()
     }
 
+    override fun searchUser(keyword: String): User? {
+        val users = userRepository.findUsersByUidOrMobile(keyword)
+        if(users.isEmpty()){
+            return null
+        }
+        if(users.size>1){
+            throw BizException("数据异常，请联系管理员")
+        }
+        return users[0]
+    }
+
 }

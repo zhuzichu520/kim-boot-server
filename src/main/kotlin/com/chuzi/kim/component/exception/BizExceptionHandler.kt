@@ -24,20 +24,19 @@ class BizExceptionHandler {
     @ExceptionHandler(value = [NullPointerException::class])
     fun exceptionHandler(e: NullPointerException): ResponseEntity<*> {
         LOGGER.error("发生空指针异常！ msg: -> ", e)
-        return ResponseEntity.make<Any>(500, "发生空指针异常!")
+        return ResponseEntity.make<Any>(500, "服务器异常，请联系管理员")
     }
 
     @ExceptionHandler(Exception::class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     fun exception(e: Exception): ResponseEntity<*> {
         LOGGER.error("服务器异常！ msg: -> ", e)
-        return ResponseEntity.make<Any>(500, "服务器异常!")
+        return ResponseEntity.make<Any>(500, "服务器异常，请联系管理员")
     }
 
     @ExceptionHandler(value = [ConstraintViolationException::class])
     fun violationExceptionHandler(e: ConstraintViolationException): ResponseEntity<*> {
         LOGGER.error("请求参数！ msg: -> ", e)
-        return ResponseEntity.make<Any>(400, e.message)
+        return ResponseEntity.make<Any>(400,e.constraintViolations.first().message)
     }
 
     @ExceptionHandler(value = [JWTVerificationException::class])
