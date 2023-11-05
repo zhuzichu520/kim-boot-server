@@ -6,7 +6,7 @@ interface UserService {
 
     fun register(user: User)
 
-    fun login(user: User):String
+    fun login(uid: String, password: String): User
     fun getUserByUid(uid: String): User
 
     fun searchUser(keyword: String): User?

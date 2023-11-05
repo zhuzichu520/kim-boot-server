@@ -4,8 +4,8 @@ import com.chuzi.imsdk.server.acceptor.config.SocketConfig
 import com.chuzi.imsdk.server.constant.ChannelAttr
 import com.chuzi.imsdk.server.constant.KIMConstant
 import com.chuzi.imsdk.server.handler.LoggingHandler
-import com.chuzi.imsdk.server.model.Ping
-import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.imsdk.server.model.PingModel
+import com.chuzi.imsdk.server.model.SentBodyModel
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.*
 import io.netty.channel.epoll.EpollEventLoopGroup
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory
 
 
 abstract class NioSocketAcceptor protected constructor(socketConfig: SocketConfig) :
-    SimpleChannelInboundHandler<SentBody>() {
+    SimpleChannelInboundHandler<SentBodyModel>() {
     protected val logger: Logger = LoggerFactory.getLogger(javaClass)
     protected val loggingHandler: ChannelHandler = LoggingHandler()
     protected val socketConfig: SocketConfig
@@ -85,7 +85,7 @@ abstract class NioSocketAcceptor protected constructor(socketConfig: SocketConfi
         return bootstrap
     }
 
-    override fun channelRead0(ctx: ChannelHandlerContext, body: SentBody) {
+    override fun channelRead0(ctx: ChannelHandlerContext, body: SentBodyModel) {
         /*
 		 * 由业务层去处理其他的sentBody
 		 */
@@ -105,7 +105,7 @@ abstract class NioSocketAcceptor protected constructor(socketConfig: SocketConfi
         if (socketConfig.outerRequestHandler == null) {
             return
         }
-        val body = SentBody()
+        val body = SentBodyModel()
         body.key = KIMConstant.CLIENT_CONNECT_CLOSED
         socketConfig.outerRequestHandler?.process(ctx.channel(), body)
     }
@@ -122,7 +122,7 @@ abstract class NioSocketAcceptor protected constructor(socketConfig: SocketConfi
         if (evt.state() == IdleState.WRITER_IDLE && uid != null) {
             val pingCount = ctx.channel().attr(ChannelAttr.PING_COUNT).get()
             ctx.channel().attr(ChannelAttr.PING_COUNT).set(if (pingCount == null) 1 else pingCount + 1)
-            ctx.channel().writeAndFlush(Ping.getInstance())
+            ctx.channel().writeAndFlush(PingModel.getInstance())
             return
         }
         val pingCount = ctx.channel().attr(ChannelAttr.PING_COUNT).get()

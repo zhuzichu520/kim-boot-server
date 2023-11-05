@@ -6,7 +6,7 @@ interface FriendService {
 
     fun addFriend(uid: String,friendId:String)
     fun deleteFriend(uid: String,friendId:String)
-    fun isFriend(uid: String,friendId:String): Boolean
+    fun isFriend(uid: String,friendId:String?): Boolean
     fun getFriendsByUid(uid:String): List<User>
 
 }

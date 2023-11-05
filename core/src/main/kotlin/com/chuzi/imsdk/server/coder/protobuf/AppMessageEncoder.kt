@@ -10,7 +10,7 @@ import io.netty.handler.codec.MessageToByteEncoder
 class AppMessageEncoder : MessageToByteEncoder<Transportable>() {
     override fun encode(ctx: ChannelHandlerContext, data: Transportable, out: ByteBuf) {
         val body: ByteArray = data.getBody()
-        val header = createHeader(data.getType().value, body.size)
+        val header = createHeader(data.getDataType().value, body.size)
         out.writeBytes(header)
         out.writeBytes(body)
     }

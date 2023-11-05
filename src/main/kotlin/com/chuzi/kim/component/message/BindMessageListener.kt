@@ -4,8 +4,9 @@ import com.chuzi.kim.component.event.SessionEvent
 import com.chuzi.kim.entity.Session
 import com.chuzi.kim.utlis.JSONUtils
 import com.chuzi.imsdk.server.constant.ChannelAttr
+import com.chuzi.imsdk.server.constant.MessageType
 import com.chuzi.imsdk.server.group.SessionGroup
-import com.chuzi.imsdk.server.model.Message
+import com.chuzi.imsdk.server.model.MessageModel
 import io.netty.channel.Channel
 import io.netty.channel.ChannelFutureListener
 import jakarta.annotation.Resource
@@ -60,17 +61,17 @@ class BindMessageListener : MessageListener {
     }
 
     private class BreakOffMessageConsumer(uid: String?, deviceName: String?) : Consumer<Channel> {
-        private val message: Message = Message()
+        private val messageModel: MessageModel = MessageModel()
 
         init {
-            message.action = FORCE_OFFLINE_ACTION
-            message.receiver = uid
-            message.sender = SYSTEM_ID
-            message.content = deviceName
+            messageModel.type = MessageType.FORCE_OFFLINE_ACTION
+            messageModel.receiver = uid
+            messageModel.sender = SYSTEM_ID
+            messageModel.content = deviceName
         }
 
         override fun accept(channel: Channel) {
-            channel.writeAndFlush(message).addListener(ChannelFutureListener.CLOSE)
+            channel.writeAndFlush(messageModel).addListener(ChannelFutureListener.CLOSE)
         }
     }
 
@@ -116,7 +117,6 @@ class BindMessageListener : MessageListener {
     }
 
     companion object {
-        private const val FORCE_OFFLINE_ACTION = "999"
         private const val SYSTEM_ID = "0"
     }
 }

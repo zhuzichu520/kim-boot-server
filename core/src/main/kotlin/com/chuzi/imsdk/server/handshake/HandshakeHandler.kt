@@ -1,7 +1,7 @@
 package com.chuzi.imsdk.server.handshake
 
 import com.chuzi.imsdk.server.constant.KIMConstant
-import com.chuzi.imsdk.server.model.ReplyBody
+import com.chuzi.imsdk.server.model.ReplyBodyModel
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.ChannelHandlerContext
@@ -15,7 +15,7 @@ import java.util.function.Predicate
 @Sharable
 class HandshakeHandler(handshakePredicate: Predicate<HandshakeEvent>?) : ChannelInboundHandlerAdapter() {
 
-    private val failedBody: ReplyBody = ReplyBody.make(KIMConstant.CLIENT_HANDSHAKE,
+    private val failedBody: ReplyBodyModel = ReplyBodyModel.make(KIMConstant.CLIENT_HANDSHAKE,
             HttpResponseStatus.UNAUTHORIZED.code(),
             HttpResponseStatus.UNAUTHORIZED.reasonPhrase())
     private val handshakePredicate: Predicate<HandshakeEvent>?

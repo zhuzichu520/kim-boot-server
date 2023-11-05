@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(rollbackFor = [Exception::class])
 interface FriendRepository : JpaRepository<Friend, String>{
 
-    @Query("select user from Friend friend left join User user where friend.uid = :uid")
+    @Query("select user from Friend friend left join User user on friend.friendId = user.uid where friend.uid = :uid")
     fun findAllFriendByUid(uid:String):List<User>
     
 }

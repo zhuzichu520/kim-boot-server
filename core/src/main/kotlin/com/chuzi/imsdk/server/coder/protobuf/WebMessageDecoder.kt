@@ -3,8 +3,8 @@ package com.chuzi.imsdk.server.coder.protobuf
 import com.chuzi.imsdk.server.constant.ChannelAttr
 import com.chuzi.imsdk.server.constant.DataType
 import com.chuzi.imsdk.server.exception.ReadInvalidTypeException
-import com.chuzi.imsdk.server.model.Pong
-import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.imsdk.server.model.PongModel
+import com.chuzi.imsdk.server.model.SentBodyModel
 import com.chuzi.imsdk.server.model.proto.SentBodyProto
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.ByteBufInputStream
@@ -23,7 +23,7 @@ class WebMessageDecoder : MessageToMessageDecoder<BinaryWebSocketFrame>() {
         val buffer = frame.content()
         val type = buffer.readByte()
         if (DataType.PONG.value == type) {
-            list.add(Pong.getInstance())
+            list.add(PongModel.getInstance())
             return
         }
         if (DataType.SENT.value == type) {
@@ -34,10 +34,10 @@ class WebMessageDecoder : MessageToMessageDecoder<BinaryWebSocketFrame>() {
     }
 
     @Throws(IOException::class)
-    private fun getBody(buffer: ByteBuf?): SentBody {
+    private fun getBody(buffer: ByteBuf?): SentBodyModel {
         val inputStream: InputStream = ByteBufInputStream(buffer)
         val proto: SentBodyProto.SentBody = SentBodyProto.SentBody.parseFrom(inputStream)
-        val body = SentBody()
+        val body = SentBodyModel()
         body.data = proto.dataMap
         body.key = proto.key
         body.timestamp = proto.timestamp

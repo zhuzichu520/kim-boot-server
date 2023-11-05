@@ -5,26 +5,27 @@ import com.chuzi.imsdk.server.model.proto.MessageProto
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.io.Serializable
 
-data class Message(
-    var id: Long = 0,
-    var action: String? = null,
+data class MessageModel(
+    var id: String? = null,
+    var scene: Int = 0,
+    var type: Int = 0,
+    var subType: Int = 0,
     var title: String? = null,
     var content: String? = null,
     var sender: String? = null,
     var receiver: String? = null,
-    var format: String? = null,
     var extra: String? = null,
     var timestamp: Long = System.currentTimeMillis()
 ) : Transportable, Serializable {
     override fun getBody(): ByteArray {
         val builder: MessageProto.Message.Builder = MessageProto.Message.newBuilder()
         builder.setId(id)
-        builder.setAction(action)
+        builder.setScene(scene)
+        builder.setType(type)
         builder.setSender(sender)
         builder.setTimestamp(timestamp)
-        if (receiver != null) {
-            builder.setReceiver(receiver)
-        }
+        builder.setSubType(subType)
+        builder.setReceiver(receiver)
         if (content != null) {
             builder.setContent(content)
         }
@@ -34,14 +35,11 @@ data class Message(
         if (extra != null) {
             builder.setExtra(extra)
         }
-        if (format != null) {
-            builder.setFormat(format)
-        }
         return builder.build().toByteArray()
     }
 
     @JsonIgnore
-    override fun getType(): DataType {
+    override fun getDataType(): DataType {
         return DataType.MESSAGE
     }
 }

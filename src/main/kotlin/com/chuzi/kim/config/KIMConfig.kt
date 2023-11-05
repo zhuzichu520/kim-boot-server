@@ -12,7 +12,7 @@ import com.chuzi.imsdk.server.group.SessionGroup
 import com.chuzi.imsdk.server.group.TagSessionGroup
 import com.chuzi.imsdk.server.handler.KIMRequestHandler
 import com.chuzi.imsdk.server.handshake.HandshakeEvent
-import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.imsdk.server.model.SentBodyModel
 import io.netty.channel.Channel
 import jakarta.annotation.Resource
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
@@ -79,7 +79,7 @@ class KIMConfig : KIMRequestHandler, ApplicationListener<ApplicationStartedEvent
         return AppSocketAcceptor(config)
     }
 
-    override fun process(channel: Channel, body: SentBody) {
+    override fun process(channel: Channel, body: SentBodyModel) {
         val handler = handlerMap[body.key] ?: return
         handler.process(channel, body)
     }

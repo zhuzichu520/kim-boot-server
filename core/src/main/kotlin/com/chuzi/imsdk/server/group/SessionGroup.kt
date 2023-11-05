@@ -1,7 +1,7 @@
 package com.chuzi.imsdk.server.group
 
 import com.chuzi.imsdk.server.constant.ChannelAttr
-import com.chuzi.imsdk.server.model.Message
+import com.chuzi.imsdk.server.model.MessageModel
 import io.netty.channel.Channel
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelFutureListener
@@ -49,19 +49,19 @@ open class SessionGroup : ConcurrentHashMap<String, MutableCollection<Channel>>(
     }
 
     @JvmOverloads
-    fun write(key: String?, message: Message?, matcher: Predicate<Channel>? = Predicate { true }) {
-        find(key).stream().filter(matcher).forEach { channel: Channel -> channel.writeAndFlush(message) }
+    fun write(key: String?, messageModel: MessageModel?, matcher: Predicate<Channel>? = Predicate { true }) {
+        find(key).stream().filter(matcher).forEach { channel: Channel -> channel.writeAndFlush(messageModel) }
     }
 
 
-    fun write(key: String?, message: Message?, excludedSet: MutableCollection<String>?) {
+    fun write(key: String?, messageModel: MessageModel?, excludedSet: MutableCollection<String>?) {
         val predicate: Predicate<Channel> = ExcludedUidPredicate(excludedSet)
-        this.write(key, message, predicate)
+        this.write(key, messageModel, predicate)
     }
 
 
-    fun write(message: Message) {
-        this.write(message.receiver, message)
+    fun write(messageModel: MessageModel) {
+        this.write(messageModel.receiver, messageModel)
     }
 
     fun find(key: String?): MutableCollection<Channel> {

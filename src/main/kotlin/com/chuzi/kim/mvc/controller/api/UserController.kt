@@ -5,6 +5,8 @@ import com.chuzi.kim.annotation.UID
 import com.chuzi.kim.component.exception.BizException
 import com.chuzi.kim.entity.User
 import com.chuzi.kim.mvc.response.ResponseEntity
+import com.chuzi.kim.service.AccessTokenService
+import com.chuzi.kim.service.FriendService
 import com.chuzi.kim.service.UserService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
@@ -26,10 +28,16 @@ class UserController {
     @Resource
     private lateinit var userService: UserService
 
+    @Resource
+    private lateinit var friendService: FriendService
+
+    @Resource
+    private lateinit var accessTokenService: AccessTokenService
+
     @Operation(method = "POST", description = "用户注册")
     @PostMapping(value = ["/register"])
     fun register(
-        @Length(min=4, max = 30, message = "用户名只能在4~30位之间")
+        @Length(min = 4, max = 30, message = "用户名只能在4~30位之间")
         @Parameter(description = "用户账号", example = "admin")
         @Pattern(regexp = "^[a-zA-Z_][a-zA-Z0-9_]*\$", message = "账号必须字母或下划线开头")
         @RequestParam
@@ -45,7 +53,7 @@ class UserController {
         @RequestParam
         confirmPassword: String
     ): ResponseEntity<*> {
-        if(password!=confirmPassword){
+        if (password != confirmPassword) {
             throw BizException("两次输入密码不一致")
         }
         val user = User()
@@ -60,7 +68,7 @@ class UserController {
     @PostMapping(value = ["/login"])
     fun login(
         @Pattern(regexp = "^[a-zA-Z_][a-zA-Z0-9_]*\$", message = "账号必须字母或下划线开头")
-        @Length(min=4, max = 30, message = "用户名只能在{min}~{max}位之间")
+        @Length(min = 4, max = 30, message = "用户名只能在{min}~{max}位之间")
         @Parameter(description = "用户账号", example = "admin")
         @RequestParam
         uid: String,
@@ -70,12 +78,11 @@ class UserController {
         @RequestParam
         password: String
     ): ResponseEntity<*> {
-        val user = User()
-        user.uid = uid
-        user.password = password
-        val token =  userService.login(user)
-        val result: ResponseEntity<Map<String, Any>> = ResponseEntity()
-        result.token = token
+        val user = userService.login(uid, password)
+        user.password = null
+        val result: ResponseEntity<User> = ResponseEntity()
+        result.token = accessTokenService.generate(uid)
+        result.data = user
         result.timestamp = System.currentTimeMillis()
         return result
     }
@@ -84,9 +91,9 @@ class UserController {
     @PostMapping(value = ["/profile"])
     @LoginToken
     fun profile(
-        @Parameter(hidden = true) @UID uid:String
+        @Parameter(hidden = true) @UID uid: String
     ): ResponseEntity<*> {
-        val user:User = userService.getUserByUid(uid)
+        val user: User = userService.getUserByUid(uid)
         return ResponseEntity.ok(user)
     }
 
@@ -94,14 +101,19 @@ class UserController {
     @PostMapping(value = ["/searchUser"])
     @LoginToken
     fun searchUser(
+        @Parameter(hidden = true) @UID uid: String,
+
         @NotNull(message = "搜索关键字不能为空")
         @Length(max = 30, message = "搜索长度限制{max}")
         @Parameter(description = "关键字", example = "孙悟空")
         @RequestParam
         keyword: String,
     ): ResponseEntity<*> {
-        val user:User = userService.searchUser(keyword)?:return ResponseEntity.make()
-        return ResponseEntity.ok(user)
+        val user: User = userService.searchUser(keyword) ?: return ResponseEntity.make()
+        val data = mutableMapOf<String, Any>()
+        data["userInfo"] = user
+        data["isFriend"] = friendService.isFriend(uid, user.uid)
+        return ResponseEntity.ok(data)
     }
 
     companion object {

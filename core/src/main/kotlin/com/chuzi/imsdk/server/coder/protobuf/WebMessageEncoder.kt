@@ -11,7 +11,7 @@ class WebMessageEncoder : MessageToMessageEncoder<Transportable>() {
         val body: ByteArray = data.getBody()
         val allocator = ctx.channel().config().allocator
         val buffer = allocator.buffer(body.size + 1)
-        buffer.writeByte(data.getType().value.toInt())
+        buffer.writeByte(data.getDataType().value.toInt())
         buffer.writeBytes(body)
         out.add(BinaryWebSocketFrame(buffer))
     }

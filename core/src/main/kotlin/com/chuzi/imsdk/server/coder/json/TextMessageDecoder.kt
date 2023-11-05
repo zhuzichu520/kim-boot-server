@@ -3,8 +3,8 @@ package com.chuzi.imsdk.server.coder.json
 import com.chuzi.imsdk.server.constant.ChannelAttr
 import com.chuzi.imsdk.server.constant.DataType
 import com.chuzi.imsdk.server.exception.ReadInvalidTypeException
-import com.chuzi.imsdk.server.model.Pong
-import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.imsdk.server.model.PongModel
+import com.chuzi.imsdk.server.model.SentBodyModel
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.json.JsonReadFeature
 import com.fasterxml.jackson.databind.DeserializationFeature
@@ -20,16 +20,16 @@ class TextMessageDecoder : MessageToMessageDecoder<TextWebSocketFrame>() {
         context.channel().attr(ChannelAttr.PING_COUNT).set(null)
         val text = frame.text()
         val protocol: TransmitBody = OBJECT_MAPPER.readValue(text, TransmitBody::class.java)
-        if (protocol.type == DataType.PONG.value) {
-            list.add(Pong.getInstance())
+        if (protocol.dataType == DataType.PONG.value) {
+            list.add(PongModel.getInstance())
             return
         }
-        if (protocol.type == DataType.SENT.value) {
-            val body: SentBody = OBJECT_MAPPER.readValue(protocol.content, SentBody::class.java)
+        if (protocol.dataType == DataType.SENT.value) {
+            val body: SentBodyModel = OBJECT_MAPPER.readValue(protocol.content, SentBodyModel::class.java)
             list.add(body)
             return
         }
-        throw ReadInvalidTypeException(protocol.type)
+        throw ReadInvalidTypeException(protocol.dataType)
     }
 
     companion object {

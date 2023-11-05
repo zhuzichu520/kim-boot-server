@@ -19,22 +19,22 @@ public final class MessageProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 id = 1;</code>
+     * <code>string id = 1;</code>
      * @return The id.
      */
-    long getId();
-
+    java.lang.String getId();
     /**
-     * <code>string action = 2;</code>
-     * @return The action.
-     */
-    java.lang.String getAction();
-    /**
-     * <code>string action = 2;</code>
-     * @return The bytes for action.
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     com.google.protobuf.ByteString
-        getActionBytes();
+        getIdBytes();
+
+    /**
+     * <code>int32 scene = 2;</code>
+     * @return The scene.
+     */
+    int getScene();
 
     /**
      * <code>string content = 3;</code>
@@ -97,19 +97,19 @@ public final class MessageProto {
         getTitleBytes();
 
     /**
-     * <code>string format = 8;</code>
-     * @return The format.
+     * <code>int32 type = 8;</code>
+     * @return The type.
      */
-    java.lang.String getFormat();
-    /**
-     * <code>string format = 8;</code>
-     * @return The bytes for format.
-     */
-    com.google.protobuf.ByteString
-        getFormatBytes();
+    int getType();
 
     /**
-     * <code>int64 timestamp = 9;</code>
+     * <code>int32 subType = 9;</code>
+     * @return The subType.
+     */
+    int getSubType();
+
+    /**
+     * <code>int64 timestamp = 10;</code>
      * @return The timestamp.
      */
     long getTimestamp();
@@ -127,13 +127,12 @@ public final class MessageProto {
       super(builder);
     }
     private Message() {
-      action_ = "";
+      id_ = "";
       content_ = "";
       sender_ = "";
       receiver_ = "";
       extra_ = "";
       title_ = "";
-      format_ = "";
     }
 
     @java.lang.Override
@@ -162,52 +161,52 @@ public final class MessageProto {
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private long id_;
+    private volatile java.lang.Object id_;
     /**
-     * <code>int64 id = 1;</code>
+     * <code>string id = 1;</code>
      * @return The id.
      */
     @java.lang.Override
-    public long getId() {
-      return id_;
-    }
-
-    public static final int ACTION_FIELD_NUMBER = 2;
-    private volatile java.lang.Object action_;
-    /**
-     * <code>string action = 2;</code>
-     * @return The action.
-     */
-    @java.lang.Override
-    public java.lang.String getAction() {
-      java.lang.Object ref = action_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        action_ = s;
+        id_ = s;
         return s;
       }
     }
     /**
-     * <code>string action = 2;</code>
-     * @return The bytes for action.
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getActionBytes() {
-      java.lang.Object ref = action_;
+        getIdBytes() {
+      java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        action_ = b;
+        id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int SCENE_FIELD_NUMBER = 2;
+    private int scene_;
+    /**
+     * <code>int32 scene = 2;</code>
+     * @return The scene.
+     */
+    @java.lang.Override
+    public int getScene() {
+      return scene_;
     }
 
     public static final int CONTENT_FIELD_NUMBER = 3;
@@ -400,48 +399,32 @@ public final class MessageProto {
       }
     }
 
-    public static final int FORMAT_FIELD_NUMBER = 8;
-    private volatile java.lang.Object format_;
+    public static final int TYPE_FIELD_NUMBER = 8;
+    private int type_;
     /**
-     * <code>string format = 8;</code>
-     * @return The format.
+     * <code>int32 type = 8;</code>
+     * @return The type.
      */
     @java.lang.Override
-    public java.lang.String getFormat() {
-      java.lang.Object ref = format_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        format_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string format = 8;</code>
-     * @return The bytes for format.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFormatBytes() {
-      java.lang.Object ref = format_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        format_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getType() {
+      return type_;
     }
 
-    public static final int TIMESTAMP_FIELD_NUMBER = 9;
+    public static final int SUBTYPE_FIELD_NUMBER = 9;
+    private int subType_;
+    /**
+     * <code>int32 subType = 9;</code>
+     * @return The subType.
+     */
+    @java.lang.Override
+    public int getSubType() {
+      return subType_;
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 10;
     private long timestamp_;
     /**
-     * <code>int64 timestamp = 9;</code>
+     * <code>int64 timestamp = 10;</code>
      * @return The timestamp.
      */
     @java.lang.Override
@@ -463,11 +446,11 @@ public final class MessageProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0L) {
-        output.writeInt64(1, id_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(action_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, action_);
+      if (scene_ != 0) {
+        output.writeInt32(2, scene_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, content_);
@@ -484,11 +467,14 @@ public final class MessageProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, title_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(format_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, format_);
+      if (type_ != 0) {
+        output.writeInt32(8, type_);
+      }
+      if (subType_ != 0) {
+        output.writeInt32(9, subType_);
       }
       if (timestamp_ != 0L) {
-        output.writeInt64(9, timestamp_);
+        output.writeInt64(10, timestamp_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -499,12 +485,12 @@ public final class MessageProto {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, id_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(action_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, action_);
+      if (scene_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, scene_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, content_);
@@ -521,12 +507,17 @@ public final class MessageProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, title_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(format_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, format_);
+      if (type_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, type_);
+      }
+      if (subType_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, subType_);
       }
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(9, timestamp_);
+          .computeInt64Size(10, timestamp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -543,10 +534,10 @@ public final class MessageProto {
       }
       com.chuzi.imsdk.server.model.proto.MessageProto.Message other = (com.chuzi.imsdk.server.model.proto.MessageProto.Message) obj;
 
-      if (getId()
-          != other.getId()) return false;
-      if (!getAction()
-          .equals(other.getAction())) return false;
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (getScene()
+          != other.getScene()) return false;
       if (!getContent()
           .equals(other.getContent())) return false;
       if (!getSender()
@@ -557,8 +548,10 @@ public final class MessageProto {
           .equals(other.getExtra())) return false;
       if (!getTitle()
           .equals(other.getTitle())) return false;
-      if (!getFormat()
-          .equals(other.getFormat())) return false;
+      if (getType()
+          != other.getType()) return false;
+      if (getSubType()
+          != other.getSubType()) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -573,10 +566,9 @@ public final class MessageProto {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getId());
-      hash = (37 * hash) + ACTION_FIELD_NUMBER;
-      hash = (53 * hash) + getAction().hashCode();
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SCENE_FIELD_NUMBER;
+      hash = (53 * hash) + getScene();
       hash = (37 * hash) + CONTENT_FIELD_NUMBER;
       hash = (53 * hash) + getContent().hashCode();
       hash = (37 * hash) + SENDER_FIELD_NUMBER;
@@ -587,8 +579,10 @@ public final class MessageProto {
       hash = (53 * hash) + getExtra().hashCode();
       hash = (37 * hash) + TITLE_FIELD_NUMBER;
       hash = (53 * hash) + getTitle().hashCode();
-      hash = (37 * hash) + FORMAT_FIELD_NUMBER;
-      hash = (53 * hash) + getFormat().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType();
+      hash = (37 * hash) + SUBTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getSubType();
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
@@ -720,9 +714,9 @@ public final class MessageProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0L;
+        id_ = "";
 
-        action_ = "";
+        scene_ = 0;
 
         content_ = "";
 
@@ -734,7 +728,9 @@ public final class MessageProto {
 
         title_ = "";
 
-        format_ = "";
+        type_ = 0;
+
+        subType_ = 0;
 
         timestamp_ = 0L;
 
@@ -765,13 +761,14 @@ public final class MessageProto {
       public com.chuzi.imsdk.server.model.proto.MessageProto.Message buildPartial() {
         com.chuzi.imsdk.server.model.proto.MessageProto.Message result = new com.chuzi.imsdk.server.model.proto.MessageProto.Message(this);
         result.id_ = id_;
-        result.action_ = action_;
+        result.scene_ = scene_;
         result.content_ = content_;
         result.sender_ = sender_;
         result.receiver_ = receiver_;
         result.extra_ = extra_;
         result.title_ = title_;
-        result.format_ = format_;
+        result.type_ = type_;
+        result.subType_ = subType_;
         result.timestamp_ = timestamp_;
         onBuilt();
         return result;
@@ -821,12 +818,12 @@ public final class MessageProto {
 
       public Builder mergeFrom(com.chuzi.imsdk.server.model.proto.MessageProto.Message other) {
         if (other == com.chuzi.imsdk.server.model.proto.MessageProto.Message.getDefaultInstance()) return this;
-        if (other.getId() != 0L) {
-          setId(other.getId());
-        }
-        if (!other.getAction().isEmpty()) {
-          action_ = other.action_;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
           onChanged();
+        }
+        if (other.getScene() != 0) {
+          setScene(other.getScene());
         }
         if (!other.getContent().isEmpty()) {
           content_ = other.content_;
@@ -848,9 +845,11 @@ public final class MessageProto {
           title_ = other.title_;
           onChanged();
         }
-        if (!other.getFormat().isEmpty()) {
-          format_ = other.format_;
-          onChanged();
+        if (other.getType() != 0) {
+          setType(other.getType());
+        }
+        if (other.getSubType() != 0) {
+          setSubType(other.getSubType());
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
@@ -881,16 +880,16 @@ public final class MessageProto {
               case 0:
                 done = true;
                 break;
-              case 8: {
-                id_ = input.readInt64();
+              case 10: {
+                id_ = input.readStringRequireUtf8();
 
                 break;
-              } // case 8
-              case 18: {
-                action_ = input.readStringRequireUtf8();
+              } // case 10
+              case 16: {
+                scene_ = input.readInt32();
 
                 break;
-              } // case 18
+              } // case 16
               case 26: {
                 content_ = input.readStringRequireUtf8();
 
@@ -916,16 +915,21 @@ public final class MessageProto {
 
                 break;
               } // case 58
-              case 66: {
-                format_ = input.readStringRequireUtf8();
+              case 64: {
+                type_ = input.readInt32();
 
                 break;
-              } // case 66
+              } // case 64
               case 72: {
-                timestamp_ = input.readInt64();
+                subType_ = input.readInt32();
 
                 break;
               } // case 72
+              case 80: {
+                timestamp_ = input.readInt64();
+
+                break;
+              } // case 80
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -942,109 +946,109 @@ public final class MessageProto {
         return this;
       }
 
-      private long id_ ;
+      private java.lang.Object id_ = "";
       /**
-       * <code>int64 id = 1;</code>
+       * <code>string id = 1;</code>
        * @return The id.
        */
-      @java.lang.Override
-      public long getId() {
-        return id_;
-      }
-      /**
-       * <code>int64 id = 1;</code>
-       * @param value The id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setId(long value) {
-        
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        
-        id_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object action_ = "";
-      /**
-       * <code>string action = 2;</code>
-       * @return The action.
-       */
-      public java.lang.String getAction() {
-        java.lang.Object ref = action_;
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          action_ = s;
+          id_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string action = 2;</code>
-       * @return The bytes for action.
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
        */
       public com.google.protobuf.ByteString
-          getActionBytes() {
-        java.lang.Object ref = action_;
+          getIdBytes() {
+        java.lang.Object ref = id_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          action_ = b;
+          id_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string action = 2;</code>
-       * @param value The action to set.
+       * <code>string id = 1;</code>
+       * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setAction(
+      public Builder setId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        action_ = value;
+        id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string action = 2;</code>
+       * <code>string id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAction() {
+      public Builder clearId() {
         
-        action_ = getDefaultInstance().getAction();
+        id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
       /**
-       * <code>string action = 2;</code>
-       * @param value The bytes for action to set.
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
        * @return This builder for chaining.
        */
-      public Builder setActionBytes(
+      public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        action_ = value;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int scene_ ;
+      /**
+       * <code>int32 scene = 2;</code>
+       * @return The scene.
+       */
+      @java.lang.Override
+      public int getScene() {
+        return scene_;
+      }
+      /**
+       * <code>int32 scene = 2;</code>
+       * @param value The scene to set.
+       * @return This builder for chaining.
+       */
+      public Builder setScene(int value) {
+        
+        scene_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 scene = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearScene() {
+        
+        scene_ = 0;
         onChanged();
         return this;
       }
@@ -1429,85 +1433,71 @@ public final class MessageProto {
         return this;
       }
 
-      private java.lang.Object format_ = "";
+      private int type_ ;
       /**
-       * <code>string format = 8;</code>
-       * @return The format.
+       * <code>int32 type = 8;</code>
+       * @return The type.
        */
-      public java.lang.String getFormat() {
-        java.lang.Object ref = format_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          format_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getType() {
+        return type_;
       }
       /**
-       * <code>string format = 8;</code>
-       * @return The bytes for format.
-       */
-      public com.google.protobuf.ByteString
-          getFormatBytes() {
-        java.lang.Object ref = format_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          format_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string format = 8;</code>
-       * @param value The format to set.
+       * <code>int32 type = 8;</code>
+       * @param value The type to set.
        * @return This builder for chaining.
        */
-      public Builder setFormat(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        format_ = value;
+      public Builder setType(int value) {
+        
+        type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string format = 8;</code>
+       * <code>int32 type = 8;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFormat() {
+      public Builder clearType() {
         
-        format_ = getDefaultInstance().getFormat();
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int subType_ ;
+      /**
+       * <code>int32 subType = 9;</code>
+       * @return The subType.
+       */
+      @java.lang.Override
+      public int getSubType() {
+        return subType_;
+      }
+      /**
+       * <code>int32 subType = 9;</code>
+       * @param value The subType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubType(int value) {
+        
+        subType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string format = 8;</code>
-       * @param value The bytes for format to set.
+       * <code>int32 subType = 9;</code>
        * @return This builder for chaining.
        */
-      public Builder setFormatBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearSubType() {
         
-        format_ = value;
+        subType_ = 0;
         onChanged();
         return this;
       }
 
       private long timestamp_ ;
       /**
-       * <code>int64 timestamp = 9;</code>
+       * <code>int64 timestamp = 10;</code>
        * @return The timestamp.
        */
       @java.lang.Override
@@ -1515,7 +1505,7 @@ public final class MessageProto {
         return timestamp_;
       }
       /**
-       * <code>int64 timestamp = 9;</code>
+       * <code>int64 timestamp = 10;</code>
        * @param value The timestamp to set.
        * @return This builder for chaining.
        */
@@ -1526,7 +1516,7 @@ public final class MessageProto {
         return this;
       }
       /**
-       * <code>int64 timestamp = 9;</code>
+       * <code>int64 timestamp = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearTimestamp() {
@@ -1614,11 +1604,12 @@ public final class MessageProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\rMessage.proto\022\"com.chuzi.imsdk.server." +
-      "model.proto\"\231\001\n\007Message\022\n\n\002id\030\001 \001(\003\022\016\n\006a" +
-      "ction\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\016\n\006sender\030\004" +
-      " \001(\t\022\020\n\010receiver\030\005 \001(\t\022\r\n\005extra\030\006 \001(\t\022\r\n" +
-      "\005title\030\007 \001(\t\022\016\n\006format\030\010 \001(\t\022\021\n\ttimestam" +
-      "p\030\t \001(\003B\016B\014MessageProtob\006proto3"
+      "model.proto\"\247\001\n\007Message\022\n\n\002id\030\001 \001(\t\022\r\n\005s" +
+      "cene\030\002 \001(\005\022\017\n\007content\030\003 \001(\t\022\016\n\006sender\030\004 " +
+      "\001(\t\022\020\n\010receiver\030\005 \001(\t\022\r\n\005extra\030\006 \001(\t\022\r\n\005" +
+      "title\030\007 \001(\t\022\014\n\004type\030\010 \001(\005\022\017\n\007subType\030\t \001" +
+      "(\005\022\021\n\ttimestamp\030\n \001(\003B\016B\014MessageProtob\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1629,7 +1620,7 @@ public final class MessageProto {
     internal_static_com_chuzi_imsdk_server_model_proto_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor,
-        new java.lang.String[] { "Id", "Action", "Content", "Sender", "Receiver", "Extra", "Title", "Format", "Timestamp", });
+        new java.lang.String[] { "Id", "Scene", "Content", "Sender", "Receiver", "Extra", "Title", "Type", "SubType", "Timestamp", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

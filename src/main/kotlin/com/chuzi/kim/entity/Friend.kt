@@ -4,7 +4,7 @@ import jakarta.persistence.*
 
 
 @Entity
-@Table(name = "t_friend")
+@Table(name = "t_im_friend")
 data class Friend(
 
     @Id
@@ -12,10 +12,10 @@ data class Friend(
     @Column(name = "id")
     var id: String? = null,
 
-    @Column(name = "uid")
+    @Column(name = "uid", nullable = false)
     var uid: String? = null,
 
-    @Column(name = "friend_id")
+    @Column(name = "friend_id", nullable = false)
     var friendId: String? = null,
 
-)
+    )

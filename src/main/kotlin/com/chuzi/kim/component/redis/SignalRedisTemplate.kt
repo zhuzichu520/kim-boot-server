@@ -5,7 +5,7 @@ import com.chuzi.kim.component.event.SessionEvent
 import com.chuzi.kim.constants.Constants
 import com.chuzi.kim.entity.Session
 import com.chuzi.kim.utlis.JSONUtils
-import com.chuzi.imsdk.server.model.Message
+import com.chuzi.imsdk.server.model.MessageModel
 import jakarta.annotation.Resource
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationContext
@@ -26,12 +26,12 @@ class SignalRedisTemplate(connectionFactory: LettuceConnectionFactory) : StringR
         connectionFactory.validateConnection = true
     }
 
-    fun push(message: Message?) {
-        if (isDev && message !== null) {
-            applicationContext.publishEvent(MessageEvent(message))
+    fun push(messageModel: MessageModel?) {
+        if (isDev && messageModel !== null) {
+            applicationContext.publishEvent(MessageEvent(messageModel))
             return
         }
-        super.convertAndSend(Constants.PUSH_MESSAGE_INNER_QUEUE, JSONUtils.toJSONString(message))
+        super.convertAndSend(Constants.PUSH_MESSAGE_INNER_QUEUE, JSONUtils.toJSONString(messageModel))
     }
 
     fun bind(session: Session?) {

@@ -1,6 +1,6 @@
 package com.chuzi.imsdk.server.coder.json
 
-import com.chuzi.imsdk.server.model.Ping
+import com.chuzi.imsdk.server.model.PingModel
 import com.chuzi.imsdk.server.model.Transportable
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.JsonProcessingException
@@ -14,7 +14,7 @@ class TextMessageEncoder : MessageToMessageEncoder<Transportable>() {
     @Throws(JsonProcessingException::class)
     override fun encode(ctx: ChannelHandlerContext, data: Transportable, out: MutableList<Any>) {
         val protocol = TransmitBody()
-        protocol.type = data.getType().value
+        protocol.dataType = data.getDataType().value
         protocol.content = getBody(data)
         val frame = TextWebSocketFrame(OBJECT_MAPPER.writeValueAsString(protocol))
         out.add(frame)
@@ -22,7 +22,7 @@ class TextMessageEncoder : MessageToMessageEncoder<Transportable>() {
 
     @Throws(JsonProcessingException::class)
     private fun getBody(data: Transportable): String? {
-        return if (data is Ping) {
+        return if (data is PingModel) {
             null
         } else OBJECT_MAPPER.writeValueAsString(data)
     }

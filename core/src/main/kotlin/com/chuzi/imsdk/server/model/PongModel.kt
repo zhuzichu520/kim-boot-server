@@ -2,12 +2,12 @@ package com.chuzi.imsdk.server.model
 
 import java.io.Serializable
 
-class Pong : Serializable {
+class PongModel : Serializable {
 
     companion object {
         private const val TAG = "PONG"
-        private val INSTANCE: Pong = Pong()
-        fun getInstance(): Pong {
+        private val INSTANCE: PongModel = PongModel()
+        fun getInstance(): PongModel {
             return INSTANCE
         }
     }

@@ -27,13 +27,27 @@ class FriendServiceImpl : FriendService {
 
     @Transactional
     override fun deleteFriend(uid: String, friendId: String) {
-        if(!isFriend(uid,friendId)){
+        val userFriend = Friend().also {
+            it.uid = uid
+            it.friendId = friendId
+        }
+        val friendUser = Friend().also {
+            it.uid = friendId
+            it.friendId = uid
+        }
+        val optUserFriend = friendRepository.findOne(Example.of(userFriend))
+        val optFriendUser = friendRepository.findOne(Example.of(friendUser))
+        if(!(optUserFriend.isPresent && optFriendUser.isPresent)){
             throw BizException("你们已经不是好友关系")
         }
-        friendRepository.deleteAll(listOf(Friend(uid=uid, friendId = friendId),Friend(uid=friendId, friendId = uid)))
+        friendRepository.deleteAll(listOf(optUserFriend.get(),optFriendUser.get()))
     }
 
-    override fun isFriend(uid: String, friendId: String): Boolean {
+    override fun isFriend(uid: String, friendId: String?): Boolean {
+        if(friendId == null)
+            return false
+        if(uid == friendId)
+            return true
         val userFriend = Friend().also {
             it.uid = uid
             it.friendId = friendId

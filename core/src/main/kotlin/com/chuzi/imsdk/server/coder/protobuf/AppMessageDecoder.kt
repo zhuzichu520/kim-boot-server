@@ -4,8 +4,8 @@ import com.chuzi.imsdk.server.constant.ChannelAttr
 import com.chuzi.imsdk.server.constant.DataType
 import com.chuzi.imsdk.server.constant.KIMConstant
 import com.chuzi.imsdk.server.exception.ReadInvalidTypeException
-import com.chuzi.imsdk.server.model.Pong
-import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.imsdk.server.model.PongModel
+import com.chuzi.imsdk.server.model.SentBodyModel
 import com.chuzi.imsdk.server.model.proto.SentBodyProto
 import com.google.protobuf.InvalidProtocolBufferException
 import io.netty.buffer.ByteBuf
@@ -37,11 +37,11 @@ class AppMessageDecoder : ByteToMessageDecoder() {
     @Throws(InvalidProtocolBufferException::class)
     private fun mappingMessageObject(data: ByteArray, type: Byte): Any {
         if (DataType.PONG.value == type) {
-            return Pong.getInstance()
+            return PongModel.getInstance()
         }
         if (DataType.SENT.value == type) {
             val bodyProto: SentBodyProto.SentBody = SentBodyProto.SentBody.parseFrom(data)
-            val body = SentBody()
+            val body = SentBodyModel()
             body.data = bodyProto.dataMap
             body.key = bodyProto.key
             body.timestamp = bodyProto.timestamp

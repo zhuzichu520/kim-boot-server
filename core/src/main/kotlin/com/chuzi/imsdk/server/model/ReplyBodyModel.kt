@@ -5,7 +5,7 @@ import com.chuzi.imsdk.server.model.proto.ReplyBodyProto
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.io.Serializable
 
-data class ReplyBody(
+data class ReplyBodyModel(
     var key: String? = null,
     var code: String? = null,
     var message: String? = null,
@@ -13,8 +13,8 @@ data class ReplyBody(
     var timestamp: Long = 0
 ) : Transportable, Serializable {
     companion object {
-        fun make(key: String, code: Int, message: String): ReplyBody {
-            val body = ReplyBody()
+        fun make(key: String, code: Int, message: String): ReplyBodyModel {
+            val body = ReplyBodyModel()
             body.key = key
             body.code = code.toString()
             body.message = message
@@ -37,7 +37,7 @@ data class ReplyBody(
     }
 
     @JsonIgnore
-    override fun getType(): DataType {
+    override fun getDataType(): DataType {
         return DataType.REPLY
     }
 }

@@ -8,8 +8,8 @@ import com.chuzi.kim.service.SessionService
 import com.chuzi.imsdk.server.constant.ChannelAttr
 import com.chuzi.imsdk.server.group.SessionGroup
 import com.chuzi.imsdk.server.handler.KIMRequestHandler
-import com.chuzi.imsdk.server.model.ReplyBody
-import com.chuzi.imsdk.server.model.SentBody
+import com.chuzi.imsdk.server.model.ReplyBodyModel
+import com.chuzi.imsdk.server.model.SentBodyModel
 import com.chuzi.kim.service.AccessTokenService
 import io.netty.channel.Channel
 import jakarta.annotation.Resource
@@ -30,11 +30,11 @@ class BindHandler : KIMRequestHandler {
     @Resource
     private lateinit var accessTokenService: AccessTokenService
 
-    override fun process(channel: Channel, body: SentBody) {
+    override fun process(channel: Channel, body: SentBodyModel) {
         if (sessionGroup.isManaged(channel)) {
             return
         }
-        val reply = ReplyBody()
+        val reply = ReplyBodyModel()
         reply.key = body.key
         reply.code = HttpStatus.OK.value().toString()
         reply.timestamp = System.currentTimeMillis()

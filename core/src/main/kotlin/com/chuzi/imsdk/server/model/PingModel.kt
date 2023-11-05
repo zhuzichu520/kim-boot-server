@@ -3,12 +3,12 @@ package com.chuzi.imsdk.server.model
 import com.chuzi.imsdk.server.constant.DataType
 import java.io.Serializable
 
-class Ping : Serializable, Transportable {
+class PingModel : Serializable, Transportable {
     companion object {
         private const val TAG = "PING"
         private const val DATA = "PING"
-        private val INSTANCE: Ping = Ping()
-        fun getInstance(): Ping {
+        private val INSTANCE: PingModel = PingModel()
+        fun getInstance(): PingModel {
             return INSTANCE
         }
     }
@@ -21,7 +21,7 @@ class Ping : Serializable, Transportable {
         return DATA.toByteArray()
     }
 
-    override fun getType(): DataType {
+    override fun getDataType(): DataType {
         return DataType.PING
     }
 }
