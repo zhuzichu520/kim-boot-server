@@ -97,6 +97,21 @@ class UserController {
         return ResponseEntity.ok(user)
     }
 
+    @Operation(method = "POST", description = "获取用户信息")
+    @PostMapping(value = ["/getUserInfo"])
+    @LoginToken
+    fun getUserInfo(
+        @Pattern(regexp = "^[a-zA-Z_][a-zA-Z0-9_]*\$", message = "账号必须字母或下划线开头")
+        @Length(min = 4, max = 30, message = "用户名只能在{min}~{max}位之间")
+        @Parameter(description = "用户id", example = "sunuwkong")
+        @RequestParam
+        uid: String,
+    ): ResponseEntity<*> {
+        val user: User = userService.getUserByUid(uid)
+        user.password= null
+        return ResponseEntity.ok(user)
+    }
+
     @Operation(method = "POST", description = "根据关键字搜索用户")
     @PostMapping(value = ["/searchUser"])
     @LoginToken
