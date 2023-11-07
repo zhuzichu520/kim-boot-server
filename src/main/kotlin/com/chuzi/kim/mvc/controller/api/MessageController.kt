@@ -24,9 +24,6 @@ import org.springframework.web.bind.annotation.RestController
 class MessageController {
 
     @Resource
-    private lateinit var defaultMessagePusher: DefaultMessagePusher
-
-    @Resource
     private lateinit var messageService: MessageService
 
     @Operation(method = "POST", description = "发送消息")
@@ -70,7 +67,6 @@ class MessageController {
         message.title = title
         message.extra = extra
         message = messageService.sendMessage(message)
-//        defaultMessagePusher.push(messageModel)
         return ResponseEntity.ok(message)
 
     }
