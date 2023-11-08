@@ -8,8 +8,6 @@ interface SessionService {
     fun delete(id: String)
     fun deleteLocalhost()
     fun updateState(id: String, state: Int)
-    fun openApns(uid: String, deviceToken: String)
-    fun closeApns(uid: String)
     fun findAll(): List<Session>
 
 }

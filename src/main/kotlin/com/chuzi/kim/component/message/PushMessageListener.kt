@@ -26,8 +26,10 @@ class PushMessageListener : MessageListener {
     }
 
     fun onMessage(messageModel: MessageModel) {
-        val uid = messageModel.receiver ?: return
-        sessionGroup.write(uid, messageModel)
+        val receiver = messageModel.receiver ?: return
+        sessionGroup.write(receiver, messageModel)
+        val sender = messageModel.sender ?: return
+        sessionGroup.write(sender, messageModel)
     }
 }
 
