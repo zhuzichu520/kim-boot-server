@@ -38,4 +38,5 @@ class SessionServiceImpl : SessionService {
             it?.state == Session.STATE_ACTIVE || it?.state == Session.STATE_APNS
         }
     }
+
 }

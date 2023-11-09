@@ -53,7 +53,7 @@ class BindMessageListener : MessageListener {
         if (ArrayUtils.isEmpty(conflictChannels)) {
             return
         }
-        val channelList = sessionGroup.find(session.uid, *conflictChannels) ?: return
+        val channelList = sessionGroup.find(session.uid, *conflictChannels)
         channelList.removeIf(KeepLivePredicate(session))
         channelList.stream().filter(SameDevicePredicate(session)).forEach { obj: Channel -> obj.close() }
         channelList.stream().filter(DifferentDevicePredicate(session))

@@ -28,8 +28,6 @@ class PushMessageListener : MessageListener {
     fun onMessage(messageModel: MessageModel) {
         val receiver = messageModel.receiver ?: return
         sessionGroup.write(receiver, messageModel)
-        val sender = messageModel.sender ?: return
-        sessionGroup.write(sender, messageModel)
     }
 }
 

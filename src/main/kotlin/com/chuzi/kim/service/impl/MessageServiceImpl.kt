@@ -15,7 +15,6 @@ class MessageServiceImpl : MessageService {
     @Resource
     private lateinit var messageRepository: MessageRepository
 
-
     @Resource
     private lateinit var defaultMessagePusher: DefaultMessagePusher
 
