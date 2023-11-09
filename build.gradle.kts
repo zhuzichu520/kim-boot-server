@@ -34,6 +34,7 @@ dependencies {
 	implementation("commons-io:commons-io:2.14.0")
 	implementation("io.netty:netty-all:4.1.100.Final")
 	implementation("com.auth0:java-jwt:4.4.0")
+	implementation("cn.hutool:hutool-all:5.8.22")
 	implementation(project(path = ":core"))
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

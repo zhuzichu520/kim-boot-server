@@ -35,4 +35,18 @@ class MessageServiceImpl : MessageService {
         return messageRepository.save(message)
     }
 
+    override fun setMessageReadByIds(uid:String,ids: List<String>) {
+        val messages:List<Message> = messageRepository.findMessageInIds(ids)
+        messages.forEach {
+            if(it.readUIds.isNullOrEmpty()){
+                it.readUIds = uid
+            }else{
+                if(it.readUIds?.contains(uid) == false){
+                    it.readUIds = it.readUIds+","+uid
+                }
+            }
+        }
+        messageRepository.saveAll(messages)
+    }
+
 }

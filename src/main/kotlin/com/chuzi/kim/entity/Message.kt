@@ -14,7 +14,7 @@ data class Message(
     @Column(name = "type")
     var type: Int = 0,
 
-    @Column(name = "subType")
+    @Column(name = "sub_type")
     var subType: Int = 0,
 
     @Column(name = "title")
@@ -33,5 +33,8 @@ data class Message(
     var extra: String? = null,
 
     @Column(name = "timestamp", nullable = false)
-    var timestamp: Long = System.currentTimeMillis()
+    var timestamp: Long = System.currentTimeMillis(),
+
+    @Column(name = "read_uids")
+    var readUIds: String? = null,
 )

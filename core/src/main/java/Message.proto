@@ -13,5 +13,6 @@ message Message {
   int32 type = 8;
   int32 subType = 9;
   int64 timestamp = 10;
+  string readUIds = 11;
 }
 	 

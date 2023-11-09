@@ -1,14 +1,13 @@
 package com.chuzi.kim.mvc.controller.api
 
+import cn.hutool.core.text.StrSplitter
 import com.chuzi.kim.annotation.LoginToken
 import com.chuzi.kim.annotation.UID
-import com.chuzi.kim.component.push.DefaultMessagePusher
 import com.chuzi.kim.entity.Message
 import com.chuzi.kim.mvc.response.ResponseEntity
 import com.chuzi.kim.service.MessageService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
-import io.swagger.v3.oas.annotations.enums.ParameterIn
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.annotation.Resource
 import org.springframework.validation.annotation.Validated
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+
 
 @RestController
 @RequestMapping("/message")
@@ -68,7 +68,21 @@ class MessageController {
         message.extra = extra
         message = messageService.sendMessage(message)
         return ResponseEntity.ok(message)
-
     }
+
+    @Operation(method = "POST", description = "消息已读")
+    @LoginToken
+    @PostMapping(value = ["/messageRead"])
+    fun messageRead(
+        @Parameter(hidden = true) @UID uid:String,
+
+        @Parameter( name = "ids",description = "消息id集合，用逗号','隔开",required = true,example = "d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3,d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3")
+        @RequestParam ids: String,
+    ): ResponseEntity<*> {
+        val arr = StrSplitter.split(ids, ',', 0, true, true)
+        messageService.setMessageReadByIds(uid,arr)
+        return ResponseEntity.make()
+    }
+
 }
 
