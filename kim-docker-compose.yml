@@ -1,5 +1,24 @@
 version: '3.5'
+
 services:
+  app:
+    image: openjdk:17.0.1
+    working_dir: /app
+    volumes:
+      - "./dist:/app"
+      - "./dist/resources:/app/resources"
+    ports:
+      - "8080:8080"
+      - "23456:23456"
+      - "34567:34567"
+    command: "java -jar kim-boot-server.jar --spring.profiles.active=prod"
+    networks:
+      app-network:
+        ipv4_address: 172.33.0.2
+    depends_on:
+      - mysql
+      - redis
+
   mysql:
     image: mysql:8.1.0
     restart: always
@@ -22,7 +41,9 @@ services:
       MYSQL_INITDB_SKIP_TZINFO: "Asia/Shanghai"
     ports:
       - "3306:3306"
-    network_mode: "bridge"
+    networks:
+      app-network:
+        ipv4_address: 172.33.0.3
 
   redis:
     image: redis:7.2.2
@@ -35,3 +56,15 @@ services:
       - ./volumes/redis/data/:/data/
       - ./volumes/redis/data/logs/:/logs/
     command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      app-network:
+        ipv4_address: 172.33.0.4
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.33.0.0/24
+          gateway: 172.33.0.1

@@ -1,0 +1,78 @@
+server:
+  port: 8080
+
+kim:
+  app:
+    port: 23456
+    enable=: true
+    write-idle: 45s
+    read-idle: 60s
+    max-pong-timeout: 3
+  websocket:
+    enable: true
+    port: 34567
+    path: /
+    protocol: protobuf
+    write-idle: 45s
+    read-idle: 60s
+    max-pong-timeout: 3
+
+spring:
+  jackson:
+    default-property-inclusion: non_empty
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/kim?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari.minimum-idle: 5
+    hikari.maximum-pool-size: 10
+    hikari.auto-commit: true
+    hikari.idle-timeout: 30000
+    hikari.pool-name: MASTER_HIKARI_POOL
+    hikari.max-lifetime: 120000
+    hikari.connection-timeout: 30000
+    hikari.connection-test-query: SELECT 1
+    hikari.validation-timeout: 600000
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate.ddl-auto: update
+    open-in-view: false
+    hibernate.naming.implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  data:
+    redis:
+      host: 127.0.0.1
+      password: 123456
+      port: 6379
+      database: 12
+      lettuce.pool.max-active: 10
+      lettuce.pool.max-wait: 10s
+      lettuce.pool.max-idle: 5
+      lettuce.pool.min-idle: 1
+      timeout: 10s
+  freemarker:
+    suffix: .html
+    charset: utf-8
+    content-type: text/html
+    cache: false
+    templateLoaderPath: classpath:/page/
+    settings:
+      auto_import: /ftl/spring.ftl as spring
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+
+springdoc:
+  packages-to-scan:
+    - com.chuzi.kim.mvc.controller.api
+  swagger-ui:
+    enabled: true
+    path: /api-ui
+  api-docs:
+    enabled: true
+    path: /api-docs
+  use-management-port: false
+
