@@ -13,5 +13,8 @@ interface MessageRepository : JpaRepository<Message, String> {
     @Query("SELECT message FROM Message message WHERE message.id IN :ids")
     fun findMessageInIds(ids: List<String>): List<Message>
 
+    @Query("SELECT message from Message message where (message.sender = :uid or message.receiver = :uid) and message.timestamp > :lastTimestamp")
+    fun findMessageByUidAndLastTimestamp(uid: String, lastTimestamp: Long): List<Message>
+
 }
 

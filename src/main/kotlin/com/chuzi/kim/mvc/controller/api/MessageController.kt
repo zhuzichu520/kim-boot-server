@@ -30,30 +30,35 @@ class MessageController {
     @LoginToken
     @PostMapping(value = ["/send"])
     fun send(
-        @Parameter(hidden = true) @UID uid:String,
+        @Parameter(hidden = true) @UID uid: String,
 
-        @Parameter( name = "id",description = "消息UUID",required = true,example = "d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3")
+        @Parameter(
+            name = "id",
+            description = "消息UUID",
+            required = true,
+            example = "d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3"
+        )
         @RequestParam id: String,
 
-        @Parameter( name = "receiver",description = "接收者UID",required = true,example = "zhuzichu")
+        @Parameter(name = "receiver", description = "接收者UID", required = true, example = "zhuzichu")
         @RequestParam receiver: String,
 
-        @Parameter( name = "scene",description = "仅可传入 0 或 1，0：单聊消息，1：群消息",required = true,example = "0")
+        @Parameter(name = "scene", description = "仅可传入 0 或 1，0：单聊消息，1：群消息", required = true, example = "0")
         @RequestParam scene: Int,
 
-        @Parameter( name = "type",description = "消息类型",required = true,example = "0")
+        @Parameter(name = "type", description = "消息类型", required = true, example = "0")
         @RequestParam type: Int,
 
-        @Parameter(name = "content", description = "消息内容",required = true, example = "你好啊啊")
+        @Parameter(name = "content", description = "消息内容", required = true, example = "你好啊啊")
         @RequestParam content: String,
 
-        @Parameter(name = "subType",description = "消息子类型",required = false,example = "0")
+        @Parameter(name = "subType", description = "消息子类型", required = false, example = "0")
         @RequestParam subtype: Int?,
 
-        @Parameter(name = "title", description = "消息标题",required = false, example = "")
+        @Parameter(name = "title", description = "消息标题", required = false, example = "")
         @RequestParam title: String?,
 
-        @Parameter(name = "extra", description = "扩展字段",required = false, example = "")
+        @Parameter(name = "extra", description = "扩展字段", required = false, example = "")
         @RequestParam extra: String?
     ): ResponseEntity<*> {
         var message = Message()
@@ -63,7 +68,7 @@ class MessageController {
         message.receiver = receiver
         message.type = type
         message.content = content
-        message.subType = subtype?:0
+        message.subType = subtype ?: 0
         message.title = title
         message.extra = extra
         message = messageService.sendMessage(message)
@@ -74,14 +79,38 @@ class MessageController {
     @LoginToken
     @PostMapping(value = ["/messageRead"])
     fun messageRead(
-        @Parameter(hidden = true) @UID uid:String,
+        @Parameter(hidden = true) @UID uid: String,
 
-        @Parameter( name = "ids",description = "消息id集合，用逗号','隔开",required = true,example = "d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3,d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3")
+        @Parameter(
+            name = "ids",
+            description = "消息id集合，用逗号','隔开",
+            required = true,
+            example = "d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3,d55ebd2d-de33-4ba3-b2e1-79f9b6173fe3"
+        )
         @RequestParam ids: String,
     ): ResponseEntity<*> {
         val arr = StrSplitter.split(ids, ',', 0, true, true)
-        messageService.setMessageReadByIds(uid,arr)
+        messageService.setMessageReadByIds(uid, arr)
         return ResponseEntity.make()
+    }
+
+
+    @Operation(method = "POST", description = "同步消息")
+    @LoginToken
+    @PostMapping(value = ["/syncMessage"])
+    fun syncMessage(
+        @Parameter(hidden = true) @UID uid: String,
+
+        @Parameter(
+            name = "timestamp",
+            description = "客户端最近一条消息的时间戳",
+            required = true,
+            example = "1699682999316"
+        )
+        @RequestParam timestamp: Long
+    ): ResponseEntity<*> {
+        val messages = messageService.getMessageByUidAndLastTimestamp(uid, timestamp)
+        return ResponseEntity.ok(messages)
     }
 
 }

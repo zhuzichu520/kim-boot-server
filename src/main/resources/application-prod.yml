@@ -69,10 +69,10 @@ springdoc:
   packages-to-scan:
     - com.chuzi.kim.mvc.controller.api
   swagger-ui:
-    enabled: true
+    enabled: false
     path: /api-ui
   api-docs:
-    enabled: true
+    enabled: false
     path: /api-docs
   use-management-port: false
 

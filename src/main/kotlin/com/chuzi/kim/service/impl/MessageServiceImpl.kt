@@ -48,4 +48,8 @@ class MessageServiceImpl : MessageService {
         messageRepository.saveAll(messages)
     }
 
+    override fun getMessageByUidAndLastTimestamp(uid: String, lastTimestamp: Long): List<Message> {
+        return messageRepository.findMessageByUidAndLastTimestamp(uid, lastTimestamp)
+    }
+
 }
