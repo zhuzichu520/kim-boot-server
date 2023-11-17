@@ -1,0 +1,48 @@
+name: Windows
+on: 
+  push:
+    paths:
+      - '*.kts'
+      - 'buildSrc/**'
+      - 'core/**'
+      - 'src/**'
+      - '.github/workflows/windows.yml'
+  pull_request:
+    paths:
+      - '*.kts'
+      - 'buildSrc/**'
+      - 'core/**'
+      - 'src/**'
+      - '.github/workflows/windows.yml'
+      
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+             
+      - name: Install JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          
+      - name: Build with Gradle
+        id: build
+        shell: cmd
+        run: |
+          ./graldew bootJar
+          
+      - name: uploadRelease
+        if: startsWith(github.event.ref, 'refs/tags/')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./dist/kim-boot-server.jar
+          asset_name: kim-boot-server.jar
+          tag: ${{ github.ref }}
+          overwrite: true 

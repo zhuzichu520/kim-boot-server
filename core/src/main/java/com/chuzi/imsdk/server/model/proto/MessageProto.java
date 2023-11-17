@@ -113,6 +113,18 @@ public final class MessageProto {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>string readUIds = 11;</code>
+     * @return The readUIds.
+     */
+    java.lang.String getReadUIds();
+    /**
+     * <code>string readUIds = 11;</code>
+     * @return The bytes for readUIds.
+     */
+    com.google.protobuf.ByteString
+        getReadUIdsBytes();
   }
   /**
    * Protobuf type {@code com.chuzi.imsdk.server.model.proto.Message}
@@ -133,6 +145,7 @@ public final class MessageProto {
       receiver_ = "";
       extra_ = "";
       title_ = "";
+      readUIds_ = "";
     }
 
     @java.lang.Override
@@ -142,11 +155,6 @@ public final class MessageProto {
       return new Message();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.chuzi.imsdk.server.model.proto.MessageProto.internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor;
@@ -161,7 +169,8 @@ public final class MessageProto {
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object id_ = "";
     /**
      * <code>string id = 1;</code>
      * @return The id.
@@ -199,7 +208,7 @@ public final class MessageProto {
     }
 
     public static final int SCENE_FIELD_NUMBER = 2;
-    private int scene_;
+    private int scene_ = 0;
     /**
      * <code>int32 scene = 2;</code>
      * @return The scene.
@@ -210,7 +219,8 @@ public final class MessageProto {
     }
 
     public static final int CONTENT_FIELD_NUMBER = 3;
-    private volatile java.lang.Object content_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object content_ = "";
     /**
      * <code>string content = 3;</code>
      * @return The content.
@@ -248,7 +258,8 @@ public final class MessageProto {
     }
 
     public static final int SENDER_FIELD_NUMBER = 4;
-    private volatile java.lang.Object sender_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sender_ = "";
     /**
      * <code>string sender = 4;</code>
      * @return The sender.
@@ -286,7 +297,8 @@ public final class MessageProto {
     }
 
     public static final int RECEIVER_FIELD_NUMBER = 5;
-    private volatile java.lang.Object receiver_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object receiver_ = "";
     /**
      * <code>string receiver = 5;</code>
      * @return The receiver.
@@ -324,7 +336,8 @@ public final class MessageProto {
     }
 
     public static final int EXTRA_FIELD_NUMBER = 6;
-    private volatile java.lang.Object extra_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object extra_ = "";
     /**
      * <code>string extra = 6;</code>
      * @return The extra.
@@ -362,7 +375,8 @@ public final class MessageProto {
     }
 
     public static final int TITLE_FIELD_NUMBER = 7;
-    private volatile java.lang.Object title_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object title_ = "";
     /**
      * <code>string title = 7;</code>
      * @return The title.
@@ -400,7 +414,7 @@ public final class MessageProto {
     }
 
     public static final int TYPE_FIELD_NUMBER = 8;
-    private int type_;
+    private int type_ = 0;
     /**
      * <code>int32 type = 8;</code>
      * @return The type.
@@ -411,7 +425,7 @@ public final class MessageProto {
     }
 
     public static final int SUBTYPE_FIELD_NUMBER = 9;
-    private int subType_;
+    private int subType_ = 0;
     /**
      * <code>int32 subType = 9;</code>
      * @return The subType.
@@ -422,7 +436,7 @@ public final class MessageProto {
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 10;
-    private long timestamp_;
+    private long timestamp_ = 0L;
     /**
      * <code>int64 timestamp = 10;</code>
      * @return The timestamp.
@@ -430,6 +444,45 @@ public final class MessageProto {
     @java.lang.Override
     public long getTimestamp() {
       return timestamp_;
+    }
+
+    public static final int READUIDS_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object readUIds_ = "";
+    /**
+     * <code>string readUIds = 11;</code>
+     * @return The readUIds.
+     */
+    @java.lang.Override
+    public java.lang.String getReadUIds() {
+      java.lang.Object ref = readUIds_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        readUIds_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string readUIds = 11;</code>
+     * @return The bytes for readUIds.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getReadUIdsBytes() {
+      java.lang.Object ref = readUIds_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        readUIds_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -476,6 +529,9 @@ public final class MessageProto {
       if (timestamp_ != 0L) {
         output.writeInt64(10, timestamp_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(readUIds_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, readUIds_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -519,6 +575,9 @@ public final class MessageProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(10, timestamp_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(readUIds_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, readUIds_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -554,6 +613,8 @@ public final class MessageProto {
           != other.getSubType()) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (!getReadUIds()
+          .equals(other.getReadUIds())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -586,6 +647,8 @@ public final class MessageProto {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + READUIDS_FIELD_NUMBER;
+      hash = (53 * hash) + getReadUIds().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -635,11 +698,13 @@ public final class MessageProto {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static com.chuzi.imsdk.server.model.proto.MessageProto.Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -714,26 +779,18 @@ public final class MessageProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         id_ = "";
-
         scene_ = 0;
-
         content_ = "";
-
         sender_ = "";
-
         receiver_ = "";
-
         extra_ = "";
-
         title_ = "";
-
         type_ = 0;
-
         subType_ = 0;
-
         timestamp_ = 0L;
-
+        readUIds_ = "";
         return this;
       }
 
@@ -760,18 +817,46 @@ public final class MessageProto {
       @java.lang.Override
       public com.chuzi.imsdk.server.model.proto.MessageProto.Message buildPartial() {
         com.chuzi.imsdk.server.model.proto.MessageProto.Message result = new com.chuzi.imsdk.server.model.proto.MessageProto.Message(this);
-        result.id_ = id_;
-        result.scene_ = scene_;
-        result.content_ = content_;
-        result.sender_ = sender_;
-        result.receiver_ = receiver_;
-        result.extra_ = extra_;
-        result.title_ = title_;
-        result.type_ = type_;
-        result.subType_ = subType_;
-        result.timestamp_ = timestamp_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(com.chuzi.imsdk.server.model.proto.MessageProto.Message result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.id_ = id_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.scene_ = scene_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.content_ = content_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.sender_ = sender_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.receiver_ = receiver_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.extra_ = extra_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.title_ = title_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.type_ = type_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.subType_ = subType_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.readUIds_ = readUIds_;
+        }
       }
 
       @java.lang.Override
@@ -820,6 +905,7 @@ public final class MessageProto {
         if (other == com.chuzi.imsdk.server.model.proto.MessageProto.Message.getDefaultInstance()) return this;
         if (!other.getId().isEmpty()) {
           id_ = other.id_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getScene() != 0) {
@@ -827,22 +913,27 @@ public final class MessageProto {
         }
         if (!other.getContent().isEmpty()) {
           content_ = other.content_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (!other.getSender().isEmpty()) {
           sender_ = other.sender_;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
         if (!other.getReceiver().isEmpty()) {
           receiver_ = other.receiver_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
         if (!other.getExtra().isEmpty()) {
           extra_ = other.extra_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         if (!other.getTitle().isEmpty()) {
           title_ = other.title_;
+          bitField0_ |= 0x00000040;
           onChanged();
         }
         if (other.getType() != 0) {
@@ -853,6 +944,11 @@ public final class MessageProto {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (!other.getReadUIds().isEmpty()) {
+          readUIds_ = other.readUIds_;
+          bitField0_ |= 0x00000400;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -882,54 +978,59 @@ public final class MessageProto {
                 break;
               case 10: {
                 id_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000001;
                 break;
               } // case 10
               case 16: {
                 scene_ = input.readInt32();
-
+                bitField0_ |= 0x00000002;
                 break;
               } // case 16
               case 26: {
                 content_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000004;
                 break;
               } // case 26
               case 34: {
                 sender_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000008;
                 break;
               } // case 34
               case 42: {
                 receiver_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000010;
                 break;
               } // case 42
               case 50: {
                 extra_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000020;
                 break;
               } // case 50
               case 58: {
                 title_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000040;
                 break;
               } // case 58
               case 64: {
                 type_ = input.readInt32();
-
+                bitField0_ |= 0x00000080;
                 break;
               } // case 64
               case 72: {
                 subType_ = input.readInt32();
-
+                bitField0_ |= 0x00000100;
                 break;
               } // case 72
               case 80: {
                 timestamp_ = input.readInt64();
-
+                bitField0_ |= 0x00000200;
                 break;
               } // case 80
+              case 90: {
+                readUIds_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 90
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -945,6 +1046,7 @@ public final class MessageProto {
         } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object id_ = "";
       /**
@@ -987,11 +1089,9 @@ public final class MessageProto {
        */
       public Builder setId(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         id_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1000,8 +1100,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        
         id_ = getDefaultInstance().getId();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1012,12 +1112,10 @@ public final class MessageProto {
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         id_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1037,8 +1135,9 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder setScene(int value) {
-        
+
         scene_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1047,7 +1146,7 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearScene() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         scene_ = 0;
         onChanged();
         return this;
@@ -1094,11 +1193,9 @@ public final class MessageProto {
        */
       public Builder setContent(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         content_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1107,8 +1204,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearContent() {
-        
         content_ = getDefaultInstance().getContent();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1119,12 +1216,10 @@ public final class MessageProto {
        */
       public Builder setContentBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         content_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1170,11 +1265,9 @@ public final class MessageProto {
        */
       public Builder setSender(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         sender_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1183,8 +1276,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearSender() {
-        
         sender_ = getDefaultInstance().getSender();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -1195,12 +1288,10 @@ public final class MessageProto {
        */
       public Builder setSenderBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         sender_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1246,11 +1337,9 @@ public final class MessageProto {
        */
       public Builder setReceiver(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         receiver_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1259,8 +1348,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearReceiver() {
-        
         receiver_ = getDefaultInstance().getReceiver();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -1271,12 +1360,10 @@ public final class MessageProto {
        */
       public Builder setReceiverBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         receiver_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1322,11 +1409,9 @@ public final class MessageProto {
        */
       public Builder setExtra(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         extra_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1335,8 +1420,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearExtra() {
-        
         extra_ = getDefaultInstance().getExtra();
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -1347,12 +1432,10 @@ public final class MessageProto {
        */
       public Builder setExtraBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         extra_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1398,11 +1481,9 @@ public final class MessageProto {
        */
       public Builder setTitle(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         title_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1411,8 +1492,8 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearTitle() {
-        
         title_ = getDefaultInstance().getTitle();
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -1423,12 +1504,10 @@ public final class MessageProto {
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         title_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1448,8 +1527,9 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder setType(int value) {
-        
+
         type_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -1458,7 +1538,7 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearType() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         type_ = 0;
         onChanged();
         return this;
@@ -1479,8 +1559,9 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder setSubType(int value) {
-        
+
         subType_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -1489,7 +1570,7 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearSubType() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         subType_ = 0;
         onChanged();
         return this;
@@ -1510,8 +1591,9 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-        
+
         timestamp_ = value;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -1520,8 +1602,80 @@ public final class MessageProto {
        * @return This builder for chaining.
        */
       public Builder clearTimestamp() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object readUIds_ = "";
+      /**
+       * <code>string readUIds = 11;</code>
+       * @return The readUIds.
+       */
+      public java.lang.String getReadUIds() {
+        java.lang.Object ref = readUIds_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          readUIds_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string readUIds = 11;</code>
+       * @return The bytes for readUIds.
+       */
+      public com.google.protobuf.ByteString
+          getReadUIdsBytes() {
+        java.lang.Object ref = readUIds_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          readUIds_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string readUIds = 11;</code>
+       * @param value The readUIds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReadUIds(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        readUIds_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string readUIds = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReadUIds() {
+        readUIds_ = getDefaultInstance().getReadUIds();
+        bitField0_ = (bitField0_ & ~0x00000400);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string readUIds = 11;</code>
+       * @param value The bytes for readUIds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReadUIdsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        readUIds_ = value;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -1604,12 +1758,12 @@ public final class MessageProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\rMessage.proto\022\"com.chuzi.imsdk.server." +
-      "model.proto\"\247\001\n\007Message\022\n\n\002id\030\001 \001(\t\022\r\n\005s" +
+      "model.proto\"\271\001\n\007Message\022\n\n\002id\030\001 \001(\t\022\r\n\005s" +
       "cene\030\002 \001(\005\022\017\n\007content\030\003 \001(\t\022\016\n\006sender\030\004 " +
       "\001(\t\022\020\n\010receiver\030\005 \001(\t\022\r\n\005extra\030\006 \001(\t\022\r\n\005" +
       "title\030\007 \001(\t\022\014\n\004type\030\010 \001(\005\022\017\n\007subType\030\t \001" +
-      "(\005\022\021\n\ttimestamp\030\n \001(\003B\016B\014MessageProtob\006p" +
-      "roto3"
+      "(\005\022\021\n\ttimestamp\030\n \001(\003\022\020\n\010readUIds\030\013 \001(\tB" +
+      "\016B\014MessageProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1620,7 +1774,7 @@ public final class MessageProto {
     internal_static_com_chuzi_imsdk_server_model_proto_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_chuzi_imsdk_server_model_proto_Message_descriptor,
-        new java.lang.String[] { "Id", "Scene", "Content", "Sender", "Receiver", "Extra", "Title", "Type", "SubType", "Timestamp", });
+        new java.lang.String[] { "Id", "Scene", "Content", "Sender", "Receiver", "Extra", "Title", "Type", "SubType", "Timestamp", "ReadUIds", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

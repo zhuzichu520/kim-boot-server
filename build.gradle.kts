@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 App.init(project)
-Log.i("应用程序名称：${name}")
+Log.q("应用程序名称：${name}")
 var outJarDir = "${rootDir}${File.separator}dist"
-Log.i("Jar包输出目录：${outJarDir}")
+Log.q("Jar包输出目录：${outJarDir}")
 val appVersion = App.version()
-Log.i("应用程序版本号：${appVersion}")
+Log.q("应用程序版本号：${appVersion}")
 
 plugins {
     id("org.springframework.boot") version "3.1.5"

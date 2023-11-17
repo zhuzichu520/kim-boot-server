@@ -83,7 +83,6 @@ public final class ReplyBodyProto {
     /**
      * <code>map&lt;string, string&gt; data = 5;</code>
      */
-
     /* nullable */
 java.lang.String getDataOrDefault(
         java.lang.String key,
@@ -92,7 +91,6 @@ java.lang.String defaultValue);
     /**
      * <code>map&lt;string, string&gt; data = 5;</code>
      */
-
     java.lang.String getDataOrThrow(
         java.lang.String key);
   }
@@ -121,11 +119,6 @@ java.lang.String defaultValue);
       return new ReplyBody();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.chuzi.imsdk.server.model.proto.ReplyBodyProto.internal_static_com_chuzi_imsdk_server_model_proto_ReplyBody_descriptor;
@@ -152,7 +145,8 @@ java.lang.String defaultValue);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private volatile java.lang.Object key_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object key_ = "";
     /**
      * <code>string key = 1;</code>
      * @return The key.
@@ -190,7 +184,8 @@ java.lang.String defaultValue);
     }
 
     public static final int CODE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object code_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object code_ = "";
     /**
      * <code>string code = 2;</code>
      * @return The code.
@@ -228,7 +223,8 @@ java.lang.String defaultValue);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object message_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object message_ = "";
     /**
      * <code>string message = 3;</code>
      * @return The message.
@@ -266,7 +262,7 @@ java.lang.String defaultValue);
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 4;
-    private long timestamp_;
+    private long timestamp_ = 0L;
     /**
      * <code>int64 timestamp = 4;</code>
      * @return The timestamp.
@@ -288,6 +284,7 @@ java.lang.String defaultValue);
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "");
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> data_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -298,14 +295,12 @@ java.lang.String defaultValue);
       }
       return data_;
     }
-
     public int getDataCount() {
       return internalGetData().getMap().size();
     }
     /**
      * <code>map&lt;string, string&gt; data = 5;</code>
      */
-
     @java.lang.Override
     public boolean containsData(
         java.lang.String key) {
@@ -324,7 +319,6 @@ java.lang.String defaultValue);
      * <code>map&lt;string, string&gt; data = 5;</code>
      */
     @java.lang.Override
-
     public java.util.Map<java.lang.String, java.lang.String> getDataMap() {
       return internalGetData().getMap();
     }
@@ -332,10 +326,11 @@ java.lang.String defaultValue);
      * <code>map&lt;string, string&gt; data = 5;</code>
      */
     @java.lang.Override
-
-    public java.lang.String getDataOrDefault(
+    public /* nullable */
+java.lang.String getDataOrDefault(
         java.lang.String key,
-        java.lang.String defaultValue) {
+        /* nullable */
+java.lang.String defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.String> map =
           internalGetData().getMap();
@@ -345,7 +340,6 @@ java.lang.String defaultValue);
      * <code>map&lt;string, string&gt; data = 5;</code>
      */
     @java.lang.Override
-
     public java.lang.String getDataOrThrow(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -519,11 +513,13 @@ java.lang.String defaultValue);
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -620,14 +616,11 @@ java.lang.String defaultValue);
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         key_ = "";
-
         code_ = "";
-
         message_ = "";
-
         timestamp_ = 0L;
-
         internalGetMutableData().clear();
         return this;
       }
@@ -655,15 +648,29 @@ java.lang.String defaultValue);
       @java.lang.Override
       public com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody buildPartial() {
         com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody result = new com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody(this);
-        int from_bitField0_ = bitField0_;
-        result.key_ = key_;
-        result.code_ = code_;
-        result.message_ = message_;
-        result.timestamp_ = timestamp_;
-        result.data_ = internalGetData();
-        result.data_.makeImmutable();
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.key_ = key_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.code_ = code_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.message_ = message_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.data_ = internalGetData();
+          result.data_.makeImmutable();
+        }
       }
 
       @java.lang.Override
@@ -712,14 +719,17 @@ java.lang.String defaultValue);
         if (other == com.chuzi.imsdk.server.model.proto.ReplyBodyProto.ReplyBody.getDefaultInstance()) return this;
         if (!other.getKey().isEmpty()) {
           key_ = other.key_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (!other.getCode().isEmpty()) {
           code_ = other.code_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (other.getTimestamp() != 0L) {
@@ -727,6 +737,7 @@ java.lang.String defaultValue);
         }
         internalGetMutableData().mergeFrom(
             other.internalGetData());
+        bitField0_ |= 0x00000010;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -755,22 +766,22 @@ java.lang.String defaultValue);
                 break;
               case 10: {
                 key_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000001;
                 break;
               } // case 10
               case 18: {
                 code_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000002;
                 break;
               } // case 18
               case 26: {
                 message_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000004;
                 break;
               } // case 26
               case 32: {
                 timestamp_ = input.readInt64();
-
+                bitField0_ |= 0x00000008;
                 break;
               } // case 32
               case 42: {
@@ -779,6 +790,7 @@ java.lang.String defaultValue);
                     DataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableData().getMutableMap().put(
                     data__.getKey(), data__.getValue());
+                bitField0_ |= 0x00000010;
                 break;
               } // case 42
               default: {
@@ -839,11 +851,9 @@ java.lang.String defaultValue);
        */
       public Builder setKey(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         key_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -852,8 +862,8 @@ java.lang.String defaultValue);
        * @return This builder for chaining.
        */
       public Builder clearKey() {
-        
         key_ = getDefaultInstance().getKey();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -864,12 +874,10 @@ java.lang.String defaultValue);
        */
       public Builder setKeyBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         key_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -915,11 +923,9 @@ java.lang.String defaultValue);
        */
       public Builder setCode(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         code_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -928,8 +934,8 @@ java.lang.String defaultValue);
        * @return This builder for chaining.
        */
       public Builder clearCode() {
-        
         code_ = getDefaultInstance().getCode();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -940,12 +946,10 @@ java.lang.String defaultValue);
        */
       public Builder setCodeBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         code_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -991,11 +995,9 @@ java.lang.String defaultValue);
        */
       public Builder setMessage(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         message_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1004,8 +1006,8 @@ java.lang.String defaultValue);
        * @return This builder for chaining.
        */
       public Builder clearMessage() {
-        
         message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1016,12 +1018,10 @@ java.lang.String defaultValue);
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         message_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1041,8 +1041,9 @@ java.lang.String defaultValue);
        * @return This builder for chaining.
        */
       public Builder setTimestamp(long value) {
-        
+
         timestamp_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1051,7 +1052,7 @@ java.lang.String defaultValue);
        * @return This builder for chaining.
        */
       public Builder clearTimestamp() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         timestamp_ = 0L;
         onChanged();
         return this;
@@ -1060,7 +1061,7 @@ java.lang.String defaultValue);
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.String> data_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-      internalGetData() {
+          internalGetData() {
         if (data_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               DataDefaultEntryHolder.defaultEntry);
@@ -1068,8 +1069,7 @@ java.lang.String defaultValue);
         return data_;
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-      internalGetMutableData() {
-        onChanged();;
+          internalGetMutableData() {
         if (data_ == null) {
           data_ = com.google.protobuf.MapField.newMapField(
               DataDefaultEntryHolder.defaultEntry);
@@ -1077,16 +1077,16 @@ java.lang.String defaultValue);
         if (!data_.isMutable()) {
           data_ = data_.copy();
         }
+        bitField0_ |= 0x00000010;
+        onChanged();
         return data_;
       }
-
       public int getDataCount() {
         return internalGetData().getMap().size();
       }
       /**
        * <code>map&lt;string, string&gt; data = 5;</code>
        */
-
       @java.lang.Override
       public boolean containsData(
           java.lang.String key) {
@@ -1105,7 +1105,6 @@ java.lang.String defaultValue);
        * <code>map&lt;string, string&gt; data = 5;</code>
        */
       @java.lang.Override
-
       public java.util.Map<java.lang.String, java.lang.String> getDataMap() {
         return internalGetData().getMap();
       }
@@ -1113,10 +1112,11 @@ java.lang.String defaultValue);
        * <code>map&lt;string, string&gt; data = 5;</code>
        */
       @java.lang.Override
-
-      public java.lang.String getDataOrDefault(
+      public /* nullable */
+java.lang.String getDataOrDefault(
           java.lang.String key,
-          java.lang.String defaultValue) {
+          /* nullable */
+java.lang.String defaultValue) {
         if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.String> map =
             internalGetData().getMap();
@@ -1126,7 +1126,6 @@ java.lang.String defaultValue);
        * <code>map&lt;string, string&gt; data = 5;</code>
        */
       @java.lang.Override
-
       public java.lang.String getDataOrThrow(
           java.lang.String key) {
         if (key == null) { throw new NullPointerException("map key"); }
@@ -1137,8 +1136,8 @@ java.lang.String defaultValue);
         }
         return map.get(key);
       }
-
       public Builder clearData() {
+        bitField0_ = (bitField0_ & ~0x00000010);
         internalGetMutableData().getMutableMap()
             .clear();
         return this;
@@ -1146,7 +1145,6 @@ java.lang.String defaultValue);
       /**
        * <code>map&lt;string, string&gt; data = 5;</code>
        */
-
       public Builder removeData(
           java.lang.String key) {
         if (key == null) { throw new NullPointerException("map key"); }
@@ -1159,7 +1157,8 @@ java.lang.String defaultValue);
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.String>
-      getMutableData() {
+          getMutableData() {
+        bitField0_ |= 0x00000010;
         return internalGetMutableData().getMutableMap();
       }
       /**
@@ -1169,22 +1168,20 @@ java.lang.String defaultValue);
           java.lang.String key,
           java.lang.String value) {
         if (key == null) { throw new NullPointerException("map key"); }
-        if (value == null) {
-  throw new NullPointerException("map value");
-}
-
+        if (value == null) { throw new NullPointerException("map value"); }
         internalGetMutableData().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
        * <code>map&lt;string, string&gt; data = 5;</code>
        */
-
       public Builder putAllData(
           java.util.Map<java.lang.String, java.lang.String> values) {
         internalGetMutableData().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000010;
         return this;
       }
       @java.lang.Override
